@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iniciar sesión | MG Climas</title>
+<meta name="description" content="Accede a tu cuenta de MG Climas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a1f2e;--navy:#0d2b3e;--teal:#16899c;--cyan:#27c2d6;--frost:#dff4f6;
+    --sand:#e8c79a;--amber:#e89b3c;--paper:#f4fafb;--white:#fff;--muted:#5d7480;
+    --line:rgba(13,43,62,.12);--shadow:0 18px 50px -20px rgba(10,31,46,.35);
+    --display:'Bricolage Grotesque',sans-serif;--body:'Hanken Grotesk',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+  h1,h2,h3{font-family:var(--display);line-height:1.06;letter-spacing:-.02em;font-weight:700}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;width:100%}
+
+  header{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .35s ease;padding:18px 0}
+  header.scrolled{background:rgba(244,250,251,.85);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:12px 0}
+  .nav{display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:800;font-size:1.35rem;letter-spacing:-.03em}
+  .logo .mark{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--cyan),var(--teal));display:grid;place-items:center;color:#fff;box-shadow:0 8px 20px -6px rgba(22,137,156,.6);flex-shrink:0}
+  .logo .mark svg{width:22px;height:22px}
+  .nav-links{display:flex;gap:34px;align-items:center}
+  .nav-links a{font-weight:500;font-size:.95rem;color:var(--navy);position:relative;opacity:.85;transition:opacity .2s}
+  .nav-links a:hover,.nav-links a.active{opacity:1}
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:-5px;height:2px;width:0;background:var(--cyan);transition:width .25s ease}
+  .nav-links a:hover::after{width:100%}
+  .burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
+  .burger span{width:26px;height:2px;background:var(--navy);border-radius:2px;transition:.3s}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:1rem;transition:transform .2s,box-shadow .25s;cursor:pointer;border:none}
+  .btn-primary{background:linear-gradient(135deg,var(--cyan),var(--teal));color:#fff;box-shadow:0 14px 30px -12px rgba(22,137,156,.7)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 36px -12px rgba(22,137,156,.8)}
+
+  /* LOGIN */
+  .login-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:120px 24px 70px;
+    background:radial-gradient(800px 480px at 80% -10%,rgba(39,194,214,.22),transparent 60%),radial-gradient(600px 420px at -10% 110%,rgba(232,155,60,.10),transparent 55%),linear-gradient(180deg,#eef8f9,#f4fafb)}
+  .login-card{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:40px 38px;width:100%;max-width:430px}
+  .login-mark{width:56px;height:56px;border-radius:15px;background:linear-gradient(135deg,var(--cyan),var(--teal));display:grid;place-items:center;color:#fff;margin:0 auto 18px;box-shadow:0 10px 24px -8px rgba(22,137,156,.6)}
+  .login-mark svg{width:30px;height:30px}
+  .login-card h1{font-size:1.7rem;text-align:center}
+  .login-card .sub{color:var(--muted);text-align:center;margin:6px 0 26px;font-size:.97rem}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:.85rem;font-weight:600;margin-bottom:7px;color:var(--navy)}
+  .field input{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:11px;font-family:var(--body);font-size:.97rem;background:var(--paper);transition:border-color .2s,box-shadow .2s;color:var(--ink)}
+  .field input:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 4px rgba(39,194,214,.15)}
+  .row-between{display:flex;align-items:center;justify-content:space-between;margin:4px 0 22px;font-size:.9rem}
+  .row-between label{display:flex;align-items:center;gap:7px;color:var(--muted);cursor:pointer}
+  .row-between a{color:var(--teal);font-weight:600}
+  .login-card .btn-primary{width:100%}
+  .login-msg{display:none;margin-top:16px;padding:12px 15px;border-radius:11px;background:var(--frost);color:var(--teal);font-size:.92rem;font-weight:600;text-align:center}
+  .login-foot{text-align:center;margin-top:22px;font-size:.92rem;color:var(--muted)}
+  .login-foot a{color:var(--teal);font-weight:600}
+  .back-home{display:inline-flex;align-items:center;gap:6px;margin-top:18px;color:var(--muted);font-size:.9rem}
+  .back-home:hover{color:var(--teal)}
+
+  footer{background:var(--ink);color:rgba(255,255,255,.7);padding:40px 0;text-align:center;font-size:.86rem}
+  footer a{color:var(--cyan)}
+
+  @media(max-width:760px){
+    .nav-links{position:fixed;top:0;right:0;height:100vh;width:78%;max-width:320px;background:#fff;flex-direction:column;justify-content:center;gap:28px;transform:translateX(100%);transition:transform .35s;box-shadow:-10px 0 40px -10px rgba(0,0,0,.2)}
+    .nav-links.open{transform:translateX(0)}
+    .burger{display:flex}
+    .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .burger.open span:nth-child(2){opacity:0}
+    .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="wrap nav">
+    <a href="index.html" class="logo">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 8h13a3 3 0 1 0-3-3"/><path d="M3 14h16a3 3 0 1 1-3 3"/><path d="M3 11h9a2.5 2.5 0 1 0-2.5-2.5"/></svg></span>
+      MG Climas
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html#servicios">Servicios</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="index.html#nosotros">Por qué nosotros</a>
+      <a href="index.html#promociones">Promociones</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main class="login-wrap">
+  <div class="login-card">
+    <div class="login-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </div>
+    <h1>Iniciar sesión</h1>
+    <p class="sub">Accede a tu cuenta de MG Climas</p>
+
+    <form id="loginForm" novalidate>
+      <div class="field">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+      </div>
+      <div class="field">
+        <label for="pass">Contraseña</label>
+        <input type="password" id="pass" name="pass" placeholder="Tu contraseña" required>
+      </div>
+      <div class="row-between">
+        <label><input type="checkbox" name="recordar"> Recordarme</label>
+        <a href="#" id="forgot">¿Olvidaste tu contraseña?</a>
+      </div>
+      <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+      <div class="login-msg" id="loginMsg"></div>
+    </form>
+
+    <p class="login-foot">¿No tienes cuenta? <a href="index.html#contacto">Contáctanos</a></p>
+    <p style="text-align:center;font-size:.82rem;color:var(--muted);margin-top:8px">Vista de demostración: ingresa cualquier correo y contraseña para ver tu panel.</p>
+    <div style="text-align:center"><a href="index.html" class="back-home">&larr; Volver al inicio</a></div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> MG Climas · <a href="index.html">Inicio</a> · <a href="catalogo.html">Catálogo</a></div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var header=document.getElementById('header');
+  window.addEventListener('scroll',function(){header.classList.toggle('scrolled',window.scrollY>30);});
+  var burger=document.getElementById('burger'),navLinks=document.getElementById('navLinks');
+  burger.addEventListener('click',function(){burger.classList.toggle('open');navLinks.classList.toggle('open');});
+
+  // El inicio de sesión necesita conectarse a un sistema de cuentas para funcionar.
+  // Por ahora muestra un aviso; cuando se publique el sitio se conecta a un servicio real.
+  var form=document.getElementById('loginForm');
+  var msg=document.getElementById('loginMsg');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=document.getElementById('email').value.trim();
+    var pass=document.getElementById('pass').value.trim();
+    if(!email || !pass){
+      msg.style.display='block';
+      msg.style.background='#fdecec'; msg.style.color='#c0392b';
+      msg.textContent='Escribe tu correo y contraseña.';
+      return;
+    }
+    msg.style.display='block';
+    msg.style.background='var(--frost)'; msg.style.color='var(--teal)';
+    msg.textContent='Entrando a tu cuenta...';
+    setTimeout(function(){ window.location.href='cuenta.html'; }, 600);
+  });
+  document.getElementById('forgot').addEventListener('click',function(e){
+    e.preventDefault();
+    msg.style.display='block';
+    msg.style.background='var(--frost)'; msg.style.color='var(--teal)';
+    msg.textContent='Pronto podrás recuperar tu contraseña aquí. Por ahora, contáctanos.';
+  });
+</script>
+</body>
+</html>

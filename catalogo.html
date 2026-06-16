@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo de productos | MG Climas</title>
+<meta name="description" content="Catálogo de aires acondicionados de MG Climas: minisplits Inverter y On/Off, equipos de ventana y portátiles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a1f2e;--navy:#0d2b3e;--teal:#16899c;--cyan:#27c2d6;--frost:#dff4f6;
+    --sand:#e8c79a;--amber:#e89b3c;--paper:#f4fafb;--white:#fff;--muted:#5d7480;
+    --line:rgba(13,43,62,.12);--shadow:0 18px 50px -20px rgba(10,31,46,.35);
+    --display:'Bricolage Grotesque',sans-serif;--body:'Hanken Grotesk',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3{font-family:var(--display);line-height:1.06;letter-spacing:-.02em;font-weight:700}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+  /* NAV */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .35s ease;padding:18px 0}
+  header.scrolled{background:rgba(244,250,251,.85);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:12px 0}
+  .nav{display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:800;font-size:1.35rem;letter-spacing:-.03em}
+  .logo .mark{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--cyan),var(--teal));display:grid;place-items:center;color:#fff;box-shadow:0 8px 20px -6px rgba(22,137,156,.6);flex-shrink:0}
+  .logo .mark svg{width:22px;height:22px}
+  .nav-links{display:flex;gap:34px;align-items:center}
+  .nav-links a{font-weight:500;font-size:.95rem;color:var(--navy);position:relative;opacity:.85;transition:opacity .2s}
+  .nav-links a:hover,.nav-links a.active{opacity:1}
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:-5px;height:2px;width:0;background:var(--cyan);transition:width .25s ease}
+  .nav-links a:hover::after,.nav-links a.active::after{width:100%}
+  .nav-cta{background:var(--navy);color:#fff;padding:11px 22px;border-radius:999px;font-weight:600;font-size:.92rem;transition:transform .2s,box-shadow .2s}
+  .nav-links a.nav-cta{color:#fff}
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(13,43,62,.6)}
+  .nav-cta::after{display:none}
+  .burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
+  .burger span{width:26px;height:2px;background:var(--navy);border-radius:2px;transition:.3s}
+
+  /* BUTTONS */
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:1rem;transition:transform .2s,box-shadow .25s;cursor:pointer;border:none}
+  .btn-primary{background:linear-gradient(135deg,var(--cyan),var(--teal));color:#fff;box-shadow:0 14px 30px -12px rgba(22,137,156,.7)}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 36px -12px rgba(22,137,156,.8)}
+  .btn-ghost{background:var(--white);color:var(--navy);border:1px solid var(--line)}
+  .btn-ghost:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+
+  /* PAGE HEAD */
+  .page-head{padding:150px 0 50px;background:radial-gradient(900px 500px at 80% -10%,rgba(39,194,214,.20),transparent 60%),linear-gradient(180deg,#eef8f9,#f4fafb);text-align:center}
+  .page-head .crumb{font-size:.9rem;color:var(--muted);margin-bottom:14px}
+  .page-head .crumb a{color:var(--teal);font-weight:600}
+  .page-head h1{font-size:clamp(2.2rem,5vw,3.4rem)}
+  .page-head p{color:var(--muted);font-size:1.12rem;max-width:600px;margin:16px auto 0}
+
+  /* FILTERS */
+  .filters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:8px 0 0}
+  .chip{background:#fff;border:1px solid var(--line);color:var(--navy);padding:9px 18px;border-radius:999px;font-weight:600;font-size:.92rem;cursor:pointer;transition:all .2s}
+  .chip:hover{border-color:var(--teal)}
+  .chip.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+  /* CATALOG */
+  .catalog{padding:48px 0 100px}
+  .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .prod-card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s,border-color .3s}
+  .prod-card:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:transparent}
+  .prod-thumb{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--frost)}
+  .prod-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+  .prod-card:hover .prod-thumb img{transform:scale(1.05)}
+  .prod-badge{position:absolute;top:13px;left:13px;background:var(--teal);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:6px 13px;border-radius:999px;box-shadow:0 6px 16px -6px rgba(22,137,156,.6)}
+  .prod-info{padding:22px 24px 24px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .prod-cat{font-size:.76rem;font-weight:700;color:var(--teal);letter-spacing:.05em;text-transform:uppercase}
+  .prod-info h3{font-size:1.22rem}
+  .prod-short{color:var(--muted);font-size:.94rem;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .prod-foot{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:14px;border-top:1px solid var(--line)}
+  .prod-price{font-family:var(--display);font-weight:700;font-size:1.08rem;color:var(--navy)}
+  .prod-cta{font-weight:600;color:var(--teal);font-size:.92rem;display:inline-flex;align-items:center;gap:5px;transition:gap .2s}
+  .prod-card:hover .prod-cta{gap:10px}
+  .empty{text-align:center;color:var(--muted);padding:60px 0;grid-column:1/-1}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:rgba(255,255,255,.7);padding:60px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:44px}
+  footer .logo{color:#fff;margin-bottom:16px}
+  footer p{font-size:.94rem;max-width:320px}
+  .foot-col h4{font-family:var(--display);color:#fff;font-size:1.05rem;margin-bottom:16px;font-weight:700}
+  .foot-col a{display:block;margin-bottom:10px;font-size:.94rem;transition:color .2s}
+  .foot-col a:hover{color:var(--cyan)}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.86rem}
+
+  .wa-float{position:fixed;bottom:26px;right:26px;z-index:90;width:60px;height:60px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(37,211,102,.7);transition:transform .25s}
+  .wa-float:hover{transform:scale(1.1)}
+  .wa-float svg{width:32px;height:32px;fill:#fff}
+
+  @media(max-width:900px){
+    .prod-grid{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .nav-links{position:fixed;top:0;right:0;height:100vh;width:78%;max-width:320px;background:#fff;flex-direction:column;justify-content:center;gap:28px;transform:translateX(100%);transition:transform .35s;box-shadow:-10px 0 40px -10px rgba(0,0,0,.2)}
+    .nav-links.open{transform:translateX(0)}
+    .burger{display:flex}
+    .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .burger.open span:nth-child(2){opacity:0}
+    .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  }
+  @media(max-width:560px){.prod-grid,.foot-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="wrap nav">
+    <a href="index.html" class="logo">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 8h13a3 3 0 1 0-3-3"/><path d="M3 14h16a3 3 0 1 1-3 3"/><path d="M3 11h9a2.5 2.5 0 1 0-2.5-2.5"/></svg></span>
+      MG Climas
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html#servicios">Servicios</a>
+      <a href="catalogo.html" class="active">Catálogo</a>
+      <a href="index.html#nosotros">Por qué nosotros</a>
+      <a href="index.html#promociones">Promociones</a>
+      <a href="index.html#zona">Cobertura</a>
+      <a href="login.html" class="nav-cta">Iniciar sesión</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="wrap">
+    <p class="crumb"><a href="index.html">Inicio</a> / Catálogo</p>
+    <h1>Catálogo de productos</h1>
+    <p>Equipos de aire acondicionado para hogar y negocio. Da clic en un producto para ver sus detalles y comprarlo.</p>
+    <div class="filters" id="filters"></div>
+  </div>
+</section>
+
+<section class="catalog">
+  <div class="wrap">
+    <div class="prod-grid" id="prodGrid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 8h13a3 3 0 1 0-3-3"/><path d="M3 14h16a3 3 0 1 1-3 3"/><path d="M3 11h9a2.5 2.5 0 1 0-2.5-2.5"/></svg></span>MG Climas</div>
+        <p>Especialistas en climatización para hogar y negocio en la Comarca Lagunera. Frescura confiable, todo el año.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Explora</h4>
+        <a href="index.html#servicios">Servicios</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="index.html#promociones">Promociones</a>
+        <a href="index.html#zona">Cobertura</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contacto</h4>
+        <a href="tel:+526145137488">614 513 7488</a>
+        <a href="https://wa.me/526145137488" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:marcosgcr777@outlook.com">marcosgcr777@outlook.com</a>
+        <a href="index.html#contacto">Cotiza gratis</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> MG Climas. Todos los derechos reservados.</span>
+      <span>Hecho con frescura en La Laguna ❄️</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/526145137488" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.5-.8-2.5-1.4-3.5-3.1-.3-.5.3-.4.7-1.4.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.4 1 2.8 1.2 3c.2.2 2.1 3.2 5 4.4 1.8.8 2.5.8 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4 0-.1-.3-.2-.6-.4z"/><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.3A10 10 0 1 0 12 2zm0 18.3a8.3 8.3 0 0 1-4.2-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.3 8.3 0 1 1 12 20.3z"/></svg>
+</a>
+
+<script src="products.js"></script>
+<script>
+/* Respaldo de productos SOLO para la vista previa de este chat.
+   En tu sitio real se usa products.js; NO edites esto (edita products.js). */
+if(!window.PRODUCTS){
+/* ============================================================
+   PRODUCTOS DE MG CLIMAS  (este archivo controla el catálogo)
+   ------------------------------------------------------------
+   • Para AGREGAR un producto: copia un bloque { ... } completo,
+     pégalo dentro de la lista y cambia sus datos.
+   • "slug": identificador único, en minúsculas y SIN espacios.
+   • "image": ruta de la foto. Guárdala en  img/productos/
+   • "specs": pares de  ["Etiqueta", "Valor"].
+   • "features": lista de características (texto corto).
+   • "link" (opcional): ficha técnica del fabricante.
+   • "price": "$ 8,500", "Desde $ 6,900" o "Consultar precio".
+   Los precios y datos de abajo son de EJEMPLO: edítalos con los tuyos.
+   ============================================================ */
+
+window.WA_NUMBER = "526145137488"; // WhatsApp del botón de compra (52 + número)
+
+window.PRODUCT_FALLBACK = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20400%20300'%3E%3Crect%20width='400'%20height='300'%20fill='%23eaf6f8'/%3E%3Crect%20x='118'%20y='118'%20width='164'%20height='56'%20rx='14'%20fill='%23ffffff'%20stroke='%23cfe3e6'%20stroke-width='2'/%3E%3Crect%20x='118'%20y='118'%20width='164'%20height='18'%20rx='9'%20fill='%2316899c'/%3E%3Ctext%20x='200'%20y='212'%20font-family='sans-serif'%20font-size='17'%20font-weight='600'%20fill='%2316899c'%20text-anchor='middle'%3EFoto%20del%20producto%3C/text%3E%3C/svg%3E";
+
+window.PRODUCTS = [
+  {
+    slug: "magnum-19-platinum",
+    name: "Magnum 19 Platinum (Inverter)",
+    category: "Minisplit Inverter",
+    badge: "Inverter",
+    price: "Consultar precio",
+    image: "img/productos/magnum-19-platinum.jpg",
+    short: "Minisplit de gama alta con tecnología Inverter y alta eficiencia energética. Enfría rápido, mantiene la temperatura estable y reduce el consumo eléctrico, ideal para el calor extremo.",
+    specs: [
+      ["Capacidad de enfriamiento", "12,000 a 24,000 BTU"],
+      ["Toneladas disponibles", "1, 1.5 y 2 Ton"],
+      ["Voltaje", "115V / 230V"],
+      ["Eficiencia (SEER)", "Hasta 19"],
+      ["Refrigerante", "R410A"],
+      ["Compresor", "Velocidad variable (Inverter)"],
+      ["Nivel de ruido interior", "Desde 26 dB"],
+      ["Modos", "Solo frío y frío/calor"]
+    ],
+    features: [
+      "Compresor Inverter de velocidad variable",
+      "Arranque progresivo (menor cobro por demanda)",
+      "Conectividad WiFi opcional",
+      "Filtro antibacterial",
+      "Modo TURBO de enfriamiento",
+      "Memoria de configuración ante cortes de luz"
+    ],
+    link: "https://mirage.mx/productos/todo/aire-acondicionado/minisplit/inverter/platinum-19/"
+  },
+  {
+    slug: "minisplit-inverter-12k",
+    name: "Minisplit Inverter 12,000 BTU",
+    category: "Minisplit Inverter",
+    badge: "Inverter",
+    price: "Desde $ 7,900",
+    image: "img/productos/minisplit-inverter-12k.jpg",
+    short: "Equipo Inverter de 1 tonelada para recámaras y espacios medianos. Enfría rápido y mantiene la temperatura con un consumo eléctrico muy eficiente.",
+    specs: [
+      ["Capacidad", "12,000 BTU"],
+      ["Toneladas", "1 Ton"],
+      ["Voltaje", "115V / 220V"],
+      ["Eficiencia", "Alta eficiencia (Inverter)"],
+      ["Refrigerante", "R410A"],
+      ["Compresor", "Inverter"]
+    ],
+    features: [
+      "Tecnología Inverter de bajo consumo",
+      "Operación silenciosa",
+      "Enfriamiento rápido",
+      "Control remoto incluido"
+    ]
+  },
+  {
+    slug: "minisplit-inverter-18k",
+    name: "Minisplit Inverter 18,000 BTU",
+    category: "Minisplit Inverter",
+    badge: "Inverter",
+    price: "Desde $ 10,500",
+    image: "img/productos/minisplit-inverter-18k.jpg",
+    short: "Equipo Inverter de 1.5 toneladas, perfecto para recámaras grandes o salas medianas. Eficiente y silencioso para uso diario.",
+    specs: [
+      ["Capacidad", "18,000 BTU"],
+      ["Toneladas", "1.5 Ton"],
+      ["Voltaje", "220V"],
+      ["Eficiencia", "Alta eficiencia (Inverter)"],
+      ["Refrigerante", "R410A"],
+      ["Compresor", "Inverter"]
+    ],
+    features: [
+      "Tecnología Inverter",
+      "Bajo consumo eléctrico",
+      "Operación silenciosa",
+      "Control remoto incluido"
+    ]
+  },
+  {
+    slug: "minisplit-inverter-24k",
+    name: "Minisplit Inverter 24,000 BTU",
+    category: "Minisplit Inverter",
+    badge: "Inverter",
+    price: "Desde $ 13,500",
+    image: "img/productos/minisplit-inverter-24k.jpg",
+    short: "Equipo Inverter de 2 toneladas para salas, oficinas y espacios amplios. Gran capacidad de enfriamiento sin disparar el recibo de luz.",
+    specs: [
+      ["Capacidad", "24,000 BTU"],
+      ["Toneladas", "2 Ton"],
+      ["Voltaje", "220V"],
+      ["Eficiencia", "Alta eficiencia (Inverter)"],
+      ["Refrigerante", "R410A"],
+      ["Compresor", "Inverter"]
+    ],
+    features: [
+      "Ideal para espacios grandes",
+      "Tecnología Inverter",
+      "Enfriamiento potente",
+      "Control remoto incluido"
+    ]
+  },
+  {
+    slug: "minisplit-onoff-12k",
+    name: "Minisplit On/Off 12,000 BTU",
+    category: "Minisplit On/Off",
+    badge: "On/Off",
+    price: "Desde $ 6,200",
+    image: "img/productos/minisplit-onoff-12k.jpg",
+    short: "Minisplit tradicional de 1 tonelada, confiable y económico. Una excelente opción para uso moderado y presupuestos ajustados.",
+    specs: [
+      ["Capacidad", "12,000 BTU"],
+      ["Toneladas", "1 Ton"],
+      ["Voltaje", "115V / 220V"],
+      ["Refrigerante", "R410A"],
+      ["Compresor", "Convencional (On/Off)"]
+    ],
+    features: [
+      "Precio accesible",
+      "Fácil de operar",
+      "Enfriamiento confiable",
+      "Control remoto incluido"
+    ]
+  },
+  {
+    slug: "minisplit-onoff-24k",
+    name: "Minisplit On/Off 24,000 BTU",
+    category: "Minisplit On/Off",
+    badge: "On/Off",
+    price: "Desde $ 10,900",
+    image: "img/productos/minisplit-onoff-24k.jpg",
+    short: "Minisplit tradicional de 2 toneladas para espacios amplios. Robusto y económico, ideal cuando se busca buena capacidad a bajo costo.",
+    specs: [
+      ["Capacidad", "24,000 BTU"],
+      ["Toneladas", "2 Ton"],
+      ["Voltaje", "220V"],
+      ["Refrigerante", "R410A"],
+      ["Compresor", "Convencional (On/Off)"]
+    ],
+    features: [
+      "Buena capacidad a bajo costo",
+      "Fácil de operar",
+      "Enfriamiento confiable",
+      "Control remoto incluido"
+    ]
+  },
+  {
+    slug: "aire-ventana-12k",
+    name: "Aire de Ventana 12,000 BTU",
+    category: "De Ventana",
+    badge: "De ventana",
+    price: "Desde $ 5,500",
+    image: "img/productos/aire-ventana-12k.jpg",
+    short: "Equipo de ventana fácil de instalar y sin unidad exterior. Práctico para recámaras y espacios pequeños donde no se puede poner minisplit.",
+    specs: [
+      ["Capacidad", "12,000 BTU"],
+      ["Voltaje", "115V"],
+      ["Instalación", "En ventana (sin unidad exterior)"],
+      ["Refrigerante", "R410A"]
+    ],
+    features: [
+      "Sin unidad exterior",
+      "Instalación sencilla",
+      "Compacto",
+      "Control remoto incluido"
+    ]
+  },
+  {
+    slug: "aire-ventana-18k",
+    name: "Aire de Ventana 18,000 BTU",
+    category: "De Ventana",
+    badge: "De ventana",
+    price: "Desde $ 7,200",
+    image: "img/productos/aire-ventana-18k.jpg",
+    short: "Equipo de ventana de 1.5 toneladas, sin unidad exterior, para enfriar espacios medianos con una instalación rápida y sencilla.",
+    specs: [
+      ["Capacidad", "18,000 BTU"],
+      ["Voltaje", "220V"],
+      ["Instalación", "En ventana (sin unidad exterior)"],
+      ["Refrigerante", "R410A"]
+    ],
+    features: [
+      "Sin unidad exterior",
+      "Mayor capacidad",
+      "Instalación sencilla",
+      "Control remoto incluido"
+    ]
+  },
+  {
+    slug: "aire-portatil-12k",
+    name: "Aire Portátil 12,000 BTU",
+    category: "Portátil",
+    badge: "Portátil",
+    price: "Desde $ 6,900",
+    image: "img/productos/aire-portatil-12k.jpg",
+    short: "Aire portátil con ruedas que puedes mover de un cuarto a otro. No requiere instalación fija: solo conéctalo y dirige la salida de aire por la ventana.",
+    specs: [
+      ["Capacidad", "12,000 BTU"],
+      ["Voltaje", "115V"],
+      ["Instalación", "Portátil (con ruedas)"],
+      ["Refrigerante", "R410A"]
+    ],
+    features: [
+      "Se mueve entre habitaciones",
+      "Sin instalación fija",
+      "Ruedas integradas",
+      "Control remoto incluido"
+    ]
+  },
+  {
+    slug: "aire-portatil-14k",
+    name: "Aire Portátil 14,000 BTU",
+    category: "Portátil",
+    badge: "Portátil",
+    price: "Desde $ 8,200",
+    image: "img/productos/aire-portatil-14k.jpg",
+    short: "Aire portátil de mayor capacidad para espacios medianos. Movilidad total y cero instalación: ideal para rentas o cuartos sin ventana adecuada para minisplit.",
+    specs: [
+      ["Capacidad", "14,000 BTU"],
+      ["Voltaje", "115V"],
+      ["Instalación", "Portátil (con ruedas)"],
+      ["Refrigerante", "R410A"]
+    ],
+    features: [
+      "Mayor capacidad",
+      "Sin instalación fija",
+      "Ruedas integradas",
+      "Control remoto incluido"
+    ]
+  },
+  {
+    slug: "minisplit-comercial-36k",
+    name: "Minisplit Comercial 36,000 BTU",
+    category: "Comercial",
+    badge: "Comercial",
+    price: "Consultar precio",
+    image: "img/productos/minisplit-comercial-36k.jpg",
+    short: "Equipo de 3 toneladas para negocios, locales y oficinas. Mayor capacidad de enfriamiento pensada para uso intensivo y espacios concurridos.",
+    specs: [
+      ["Capacidad", "36,000 BTU"],
+      ["Toneladas", "3 Ton"],
+      ["Voltaje", "220V"],
+      ["Uso", "Comercial / oficinas"],
+      ["Refrigerante", "R410A"]
+    ],
+    features: [
+      "Para uso comercial",
+      "Alta capacidad",
+      "Enfriamiento para espacios grandes",
+      "Opción de contrato de mantenimiento"
+    ]
+  },
+  {
+    slug: "minisplit-comercial-60k",
+    name: "Minisplit Comercial 60,000 BTU",
+    category: "Comercial",
+    badge: "Comercial",
+    price: "Consultar precio",
+    image: "img/productos/minisplit-comercial-60k.jpg",
+    short: "Equipo de 5 toneladas para locales amplios, salones y áreas comerciales. Máxima capacidad de enfriamiento para los espacios más exigentes.",
+    specs: [
+      ["Capacidad", "60,000 BTU"],
+      ["Toneladas", "5 Ton"],
+      ["Voltaje", "220V"],
+      ["Uso", "Comercial / locales amplios"],
+      ["Refrigerante", "R410A"]
+    ],
+    features: [
+      "Máxima capacidad",
+      "Para locales amplios",
+      "Uso intensivo",
+      "Opción de contrato de mantenimiento"
+    ]
+  }
+];
+
+}
+</script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  // header + burger
+  var header=document.getElementById('header');
+  window.addEventListener('scroll',function(){header.classList.toggle('scrolled',window.scrollY>30);});
+  var burger=document.getElementById('burger'),navLinks=document.getElementById('navLinks');
+  burger.addEventListener('click',function(){burger.classList.toggle('open');navLinks.classList.toggle('open');});
+
+  // catálogo
+  var grid=document.getElementById('prodGrid');
+  var filters=document.getElementById('filters');
+  var products=window.PRODUCTS||[];
+  var current="Todos";
+
+  function cats(){
+    var set=["Todos"];
+    products.forEach(function(p){ if(set.indexOf(p.category)<0) set.push(p.category); });
+    return set;
+  }
+  function renderFilters(){
+    filters.innerHTML="";
+    cats().forEach(function(c){
+      var b=document.createElement('button');
+      b.className="chip"+(c===current?" active":"");
+      b.textContent=c;
+      b.addEventListener('click',function(){ current=c; renderFilters(); renderGrid(); });
+      filters.appendChild(b);
+    });
+  }
+  function card(p){
+    var img = p.image || "";
+    return '<a class="prod-card" href="producto.html?p='+encodeURIComponent(p.slug)+'">'
+      + '<div class="prod-thumb">'
+      + (p.badge?'<span class="prod-badge">'+p.badge+'</span>':'')
+      + '<img src="'+img+'" alt="'+p.name+'" onerror="this.onerror=null;this.src=window.PRODUCT_FALLBACK">'
+      + '</div>'
+      + '<div class="prod-info">'
+      + '<span class="prod-cat">'+(p.category||'')+'</span>'
+      + '<h3>'+p.name+'</h3>'
+      + '<p class="prod-short">'+(p.short||'')+'</p>'
+      + '<div class="prod-foot"><span class="prod-price">'+(p.price||'')+'</span>'
+      + '<span class="prod-cta">Ver detalles &rarr;</span></div>'
+      + '</div></a>';
+  }
+  function renderGrid(){
+    var list = current==="Todos" ? products : products.filter(function(p){return p.category===current;});
+    if(!list.length){ grid.innerHTML='<p class="empty">No hay productos en esta categoría.</p>'; return; }
+    grid.innerHTML = list.map(card).join("");
+  }
+  renderFilters(); renderGrid();
+</script>
+</body>
+</html>
