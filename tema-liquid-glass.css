@@ -1,0 +1,193 @@
+/* ============================================================
+   TEMA "LIQUID GLASS" DE MG CLIMAS (vidrio líquido)
+   ------------------------------------------------------------
+   Prueba visual: superficies de vidrio esmerilado translúcido,
+   reflejos suaves y un fondo de color que fluye lentamente
+   detrás de todo el contenido.
+   ------------------------------------------------------------
+   ¿Quieres VOLVER al diseño original? Borra (o comenta) la línea
+     <link rel="stylesheet" href="tema-liquid-glass.css">
+   en cada página. No hay que tocar nada más.
+   ============================================================ */
+
+:root{
+  --vidrio:rgba(255,255,255,.42);
+  --vidrio-fuerte:rgba(255,255,255,.62);
+  --vidrio-borde:rgba(255,255,255,.65);
+  --vidrio-brillo:inset 0 1px 0 rgba(255,255,255,.75), inset 0 0 0 1px rgba(255,255,255,.14);
+  --vidrio-sombra:0 24px 55px -28px rgba(10,31,46,.45);
+}
+
+/* ---------- 1) FONDO LÍQUIDO (manchas de color que fluyen) ---------- */
+body{background:#e7f2f5}
+body::before{
+  content:'';position:fixed;inset:-22%;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(42% 36% at 18% 22%, rgba(39,194,214,.55), transparent 70%),
+    radial-gradient(36% 32% at 82% 12%, rgba(22,137,156,.45), transparent 70%),
+    radial-gradient(46% 42% at 72% 82%, rgba(232,155,60,.32), transparent 70%),
+    radial-gradient(32% 30% at 12% 86%, rgba(39,194,214,.38), transparent 70%),
+    radial-gradient(26% 24% at 48% 45%, rgba(13,43,62,.14), transparent 70%);
+  filter:blur(36px);
+  animation:mgFluido 26s ease-in-out infinite alternate;
+}
+@keyframes mgFluido{
+  from{transform:translate3d(0,0,0) scale(1)}
+  to{transform:translate3d(3%,-2.5%,0) scale(1.09)}
+}
+
+/* los fondos propios de cada sección se vuelven transparentes
+   para que el líquido se vea a través del vidrio */
+.hero,#promociones,#contacto,.page-head,.acc-head,.login-wrap{background:transparent}
+
+/* ---------- 2) BARRA DE NAVEGACIÓN: píldora de vidrio flotante ---------- */
+header{padding:14px 0}
+header .nav{
+  background:rgba(255,255,255,.5);
+  -webkit-backdrop-filter:blur(22px) saturate(1.6);backdrop-filter:blur(22px) saturate(1.6);
+  border:1px solid var(--vidrio-borde);border-radius:999px;
+  padding:10px 20px;box-shadow:var(--vidrio-sombra), inset 0 1px 0 rgba(255,255,255,.8);
+}
+header.scrolled{background:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;padding:10px 0}
+header.scrolled .nav{background:rgba(255,255,255,.62)}
+
+/* menú móvil también de vidrio */
+@media(max-width:900px){
+  .nav-links{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(28px) saturate(1.5);backdrop-filter:blur(28px) saturate(1.5)}
+}
+
+/* ---------- 3) RECETA DE VIDRIO PARA TARJETAS Y PANELES ---------- */
+.card,.prod-card,.ci-item,.contact-form,.login-card,
+.sum-card,.order-card,.equip-card,.specs,.vers,.feat,
+.pill,.chip,.badge,.float-tag,.unit,.demo-tag,.carousel{
+  background:var(--vidrio);
+  -webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);
+  border:1px solid var(--vidrio-borde);
+  box-shadow:var(--vidrio-sombra), var(--vidrio-brillo);
+}
+.contact-form,.login-card,.ac-mock{background:var(--vidrio-fuerte)}
+.ac-mock{-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--vidrio-borde);box-shadow:var(--vidrio-brillo)}
+
+/* al pasar el cursor, el vidrio se aclara un poco */
+.card:hover,.prod-card:hover,.ci-item:hover,.sum-card:hover,.order-card:hover,.equip-card:hover,.feat:hover,.pill:hover{
+  background:var(--vidrio-fuerte);border-color:rgba(255,255,255,.85);
+}
+
+/* tarjetas de servicios: más transparentes para que luzca el fondo */
+.card{background:rgba(255,255,255,.26)}
+.card:hover{background:rgba(255,255,255,.46)}
+
+/* interiores translúcidos */
+.prod-thumb{background:rgba(223,244,246,.45)}
+.specs .row:nth-child(odd){background:rgba(255,255,255,.28)}
+.specs .row:hover{background:rgba(255,255,255,.5)}
+.vers .vrow:nth-child(even){background:rgba(255,255,255,.28)}
+.vers .vrow:hover{background:rgba(255,255,255,.5)}
+.vers .vrow.vhead{background:rgba(223,244,246,.55)}
+.card .ico,.sum-ic,.equip-ic,.ci-item .ic{
+  background:rgba(255,255,255,.55);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.7), 0 8px 18px -10px rgba(22,137,156,.35);
+}
+.pd-media{
+  background:var(--vidrio);
+  -webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);
+  border:1px solid var(--vidrio-borde);
+}
+
+/* ---------- 4) BOTONES DE VIDRIO ---------- */
+.btn-primary{
+  background:linear-gradient(135deg,rgba(39,194,214,.88),rgba(22,137,156,.88));
+  -webkit-backdrop-filter:blur(12px) saturate(1.4);backdrop-filter:blur(12px) saturate(1.4);
+  border:1px solid rgba(255,255,255,.5);
+  box-shadow:0 16px 34px -14px rgba(22,137,156,.6), inset 0 1px 0 rgba(255,255,255,.55);
+}
+.btn-ghost{
+  background:rgba(255,255,255,.45);
+  -webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);
+  border:1px solid var(--vidrio-borde);
+  box-shadow:var(--vidrio-brillo);
+}
+.btn-buy{
+  background:rgba(37,211,102,.85);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.5);
+  box-shadow:0 16px 34px -14px rgba(37,211,102,.6), inset 0 1px 0 rgba(255,255,255,.5);
+}
+.nav-cta{
+  background:rgba(13,43,62,.78);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.35);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25);
+}
+.chip.active{
+  background:rgba(13,43,62,.8);
+  border-color:rgba(255,255,255,.4);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25);
+}
+.car-btn{
+  background:rgba(255,255,255,.6);
+  -webkit-backdrop-filter:blur(14px) saturate(1.5);backdrop-filter:blur(14px) saturate(1.5);
+  border:1px solid var(--vidrio-borde);
+}
+.car-btn:hover{background:rgba(255,255,255,.85)}
+.wa-float{
+  background:rgba(37,211,102,.88);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.5);
+  box-shadow:0 12px 30px -8px rgba(37,211,102,.55), inset 0 1px 0 rgba(255,255,255,.45);
+}
+.mg-top{background:rgba(255,255,255,.55);border-color:var(--vidrio-borde);box-shadow:var(--vidrio-sombra), var(--vidrio-brillo)}
+
+/* botones blancos que van sobre paneles de color (tienen estilo en línea) */
+.zone-card .btn-primary,.help-box .btn-primary{
+  background:rgba(255,255,255,.82) !important;
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.9);
+}
+
+/* ---------- 5) CAMPOS DE FORMULARIO ---------- */
+.field input,.field textarea,.field select{
+  background:rgba(255,255,255,.5);
+  border:1px solid rgba(255,255,255,.7);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+}
+.field input:focus,.field textarea:focus,.field select:focus{background:rgba(255,255,255,.75)}
+
+/* ---------- 6) PANELES DE COLOR: vidrio entintado ---------- */
+.zone-card,.help-box{
+  background:linear-gradient(160deg,rgba(22,137,156,.78),rgba(13,43,62,.82));
+  -webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);
+  border:1px solid rgba(255,255,255,.35);
+  box-shadow:var(--vidrio-sombra), inset 0 1px 0 rgba(255,255,255,.3);
+}
+
+/* sección oscura "Por qué nosotros": banda de vidrio oscuro */
+#nosotros{
+  background:rgba(13,43,62,.85);
+  -webkit-backdrop-filter:blur(20px) saturate(1.3);backdrop-filter:blur(20px) saturate(1.3);
+  border-top:1px solid rgba(255,255,255,.18);
+  border-bottom:1px solid rgba(255,255,255,.18);
+}
+#nosotros .why-visual{
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+/* pie de página: vidrio oscuro */
+footer{
+  background:rgba(10,31,46,.88);
+  -webkit-backdrop-filter:blur(20px) saturate(1.3);backdrop-filter:blur(20px) saturate(1.3);
+  border-top:1px solid rgba(255,255,255,.14);
+}
+
+/* ---------- 7) DETALLES ---------- */
+.login-mark{box-shadow:0 10px 24px -8px rgba(22,137,156,.6), inset 0 1px 0 rgba(255,255,255,.5)}
+.pd-badge{background:rgba(223,244,246,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.login-msg{background:rgba(223,244,246,.6)}
+.promo-badge{border:1px solid rgba(255,255,255,.45);box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 8px 18px -6px rgba(232,155,60,.7)}
+
+/* con "menos movimiento" activado, el fondo no fluye pero sí se ve */
+@media (prefers-reduced-motion: reduce){
+  body::before{animation:none}
+}

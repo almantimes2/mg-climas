@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Iniciar sesión | MG Climas</title>
 <meta name="description" content="Accede a tu cuenta de MG Climas.">
+<meta name="theme-color" content="#16899c">
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="%2316899c"/><g fill="none" stroke="%23ffffff" stroke-width="2.2" stroke-linecap="round"><path d="M4 9.5h11a2.5 2.5 0 1 0-2.5-2.5"/><path d="M4 14.5h13a2.5 2.5 0 1 1-2.5 2.5"/></g></svg>'>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -74,6 +76,8 @@
     .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   }
 </style>
+<link rel="stylesheet" href="mejoras.css">
+<link rel="stylesheet" href="tema-liquid-glass.css">
 </head>
 <body>
 
@@ -153,7 +157,9 @@
     msg.style.display='block';
     msg.style.background='var(--frost)'; msg.style.color='var(--teal)';
     msg.textContent='Entrando a tu cuenta...';
-    setTimeout(function(){ window.location.href='cuenta.html'; }, 600);
+    // salida suave hacia la cuenta (el velo lo pinta mejoras.css)
+    setTimeout(function(){ document.body.classList.add('mg-exit'); }, 420);
+    setTimeout(function(){ window.location.href='cuenta.html'; }, 650);
   });
   document.getElementById('forgot').addEventListener('click',function(e){
     e.preventDefault();
@@ -162,5 +168,6 @@
     msg.textContent='Pronto podrás recuperar tu contraseña aquí. Por ahora, contáctanos.';
   });
 </script>
+<script src="mejoras.js"></script>
 </body>
 </html>

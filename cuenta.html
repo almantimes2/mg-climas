@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mi cuenta | MG Climas</title>
 <meta name="description" content="Panel de cliente de MG Climas: tus compras, estados, entregas y productos.">
+<meta name="theme-color" content="#16899c">
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="%2316899c"/><g fill="none" stroke="%23ffffff" stroke-width="2.2" stroke-linecap="round"><path d="M4 9.5h11a2.5 2.5 0 1 0-2.5-2.5"/><path d="M4 14.5h13a2.5 2.5 0 1 1-2.5 2.5"/></g></svg>'>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -119,6 +121,8 @@
   }
   @media(max-width:480px){.step span:not(.dot):not(.bar){font-size:.62rem}}
 </style>
+<link rel="stylesheet" href="mejoras.css">
+<link rel="stylesheet" href="tema-liquid-glass.css">
 </head>
 <body>
 
@@ -186,19 +190,19 @@
   var ACCOUNT = {
     nombre: "Juan Pérez",
     pedidos: [
-      { id:"MG-1042", fecha:"2 jun 2026", tipo:"producto", nombre:"Minisplit Inverter 12,000 BTU", precio:"$ 7,900",
-        slug:"minisplit-inverter-12k", estado:"Enviado", entrega:"10 jun 2026",
+      { id:"MG-1042", fecha:"2 jun 2026", tipo:"producto", nombre:"Inverter NEO 1 Ton (220V)", precio:"$ 7,550",
+        slug:"inverter-neo", estado:"Enviado", entrega:"10 jun 2026",
         pasos:["Confirmado","Preparación","Enviado","Entregado"], pasoActual:2 },
       { id:"MG-1036", fecha:"25 may 2026", tipo:"servicio", nombre:"Mantenimiento preventivo", precio:"$ 650",
         estado:"Completado", entrega:"27 may 2026",
         pasos:["Agendado","En proceso","Completado"], pasoActual:2 },
-      { id:"MG-1031", fecha:"18 may 2026", tipo:"producto", nombre:"Minisplit Inverter 18,000 BTU", precio:"$ 10,500",
-        slug:"minisplit-inverter-18k", estado:"Entregado", entrega:"20 may 2026",
+      { id:"MG-1031", fecha:"18 may 2026", tipo:"producto", nombre:"Inverter X 1.5 Ton (220V)", precio:"$ 9,020",
+        slug:"inverter-x", estado:"Entregado", entrega:"20 may 2026",
         pasos:["Confirmado","Preparación","Enviado","Entregado"], pasoActual:3 }
     ],
     productos: [
-      { nombre:"Minisplit Inverter 12,000 BTU", modelo:"MSI-12-INV", garantia:"Hasta jun 2027", prox:"dic 2026", slug:"minisplit-inverter-12k" },
-      { nombre:"Minisplit Inverter 18,000 BTU", modelo:"MSI-18-INV", garantia:"Hasta may 2027", prox:"nov 2026", slug:"minisplit-inverter-18k" }
+      { nombre:"Inverter NEO 1 Ton", modelo:"NEO Inverter R32", garantia:"Hasta jun 2027", prox:"dic 2026", slug:"inverter-neo" },
+      { nombre:"Inverter X 1.5 Ton", modelo:"Inverter X R32", garantia:"Hasta may 2027", prox:"nov 2026", slug:"inverter-x" }
     ]
   };
 
@@ -270,5 +274,6 @@
   document.getElementById('equipCount').textContent = productos.length;
   document.getElementById('helpBtn').href = "https://wa.me/"+WA+"?text="+encodeURIComponent("Hola MG Climas, tengo una pregunta sobre mi cuenta.");
 </script>
+<script src="mejoras.js"></script>
 </body>
 </html>

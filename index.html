@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MG Climas — Climatización en La Laguna | Instalación, Mantenimiento y Reparación</title>
 <meta name="description" content="MG Climas: instalación, mantenimiento y reparación de aire acondicionado en Torreón, Gómez Palacio y Lerdo. Servicio profesional y garantizado.">
+<meta name="theme-color" content="#16899c">
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="%2316899c"/><g fill="none" stroke="%23ffffff" stroke-width="2.2" stroke-linecap="round"><path d="M4 9.5h11a2.5 2.5 0 1 0-2.5-2.5"/><path d="M4 14.5h13a2.5 2.5 0 1 1-2.5 2.5"/></g></svg>'>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -302,6 +304,8 @@
     .float-tag.t1{left:0}.float-tag.t2{right:0}
   }
 </style>
+<link rel="stylesheet" href="mejoras.css">
+<link rel="stylesheet" href="tema-liquid-glass.css">
 <script>window.PROMO_FALLBACK="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20400%20300'%3E%3Crect%20width='400'%20height='300'%20fill='%23eaf6f8'/%3E%3Cg%20stroke='%2316899c'%20stroke-width='2.5'%20fill='none'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Crect%20x='138'%20y='100'%20width='124'%20height='94'%20rx='12'/%3E%3Ccircle%20cx='170'%20cy='132'%20r='11'/%3E%3Cpath%20d='M140%20182%20l34-30%2026%2021%2030-26%2030%2025'/%3E%3C/g%3E%3Ctext%20x='200'%20y='228'%20font-family='sans-serif'%20font-size='17'%20font-weight='600'%20fill='%2316899c'%20text-anchor='middle'%3ETu%20promoci%C3%B3n%20aqu%C3%AD%3C/text%3E%3C/svg%3E";</script>
 </head>
 <body>
@@ -462,7 +466,7 @@
         </div>
 
         <div class="slide">
-          <img class="promo-img" src="img/promo-2.jpg" alt="Promoción 2" onerror="this.onerror=null;this.src=window.PROMO_FALLBACK">
+          <img class="promo-img" src="img/promo-2.jpg" alt="Promoción 2" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=window.PROMO_FALLBACK">
           <div class="scrim"></div>
           <div class="slide-overlay">
             <span class="promo-badge nuevo">Nuevo</span>
@@ -475,7 +479,7 @@
         </div>
 
         <div class="slide">
-          <img class="promo-img" src="img/promo-3.jpg" alt="Promoción 3" onerror="this.onerror=null;this.src=window.PROMO_FALLBACK">
+          <img class="promo-img" src="img/promo-3.jpg" alt="Promoción 3" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=window.PROMO_FALLBACK">
           <div class="scrim"></div>
           <div class="slide-overlay">
             <span class="promo-badge">Promoción</span>
@@ -637,16 +641,8 @@
     burger.classList.remove('open'); navLinks.classList.remove('open');
   }));
 
-  // scroll reveal
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach((el, i) => {
-    el.style.transitionDelay = (i % 4 * 0.07) + 's';
-    io.observe(el);
-  });
+  // Las animaciones al hacer scroll ahora viven en mejoras.js
+  // (se repiten al subir y al bajar, en todas las páginas).
 
   // form -> WhatsApp (reemplaza el número por el tuyo)
   const WHATS = '526145137488'; // <-- CAMBIA ESTE NÚMERO
@@ -690,5 +686,6 @@
     update(); restart();
   })();
 </script>
+<script src="mejoras.js"></script>
 </body>
 </html>

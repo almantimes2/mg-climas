@@ -1,0 +1,181 @@
+/* ============================================================
+   MEJORAS VISUALES DE MG CLIMAS
+   ------------------------------------------------------------
+   Animaciones y micro-detalles de todo el sitio:
+   • Transición suave al cambiar de página (sin corte brusco).
+   • Aparición de elementos al subir o bajar (scroll).
+   • Efectos al pasar el cursor por botones y tarjetas.
+   • Barra de progreso, botón "volver arriba" y detalles finos.
+   Se carga en todas las páginas DESPUÉS de sus estilos propios.
+   No necesitas editar este archivo para administrar el catálogo.
+   ============================================================ */
+
+/* ---------- 1) TRANSICIÓN ENTRE PÁGINAS ---------- */
+/* velo que suaviza la entrada y la salida de cada página */
+body::after{
+  content:'';position:fixed;inset:0;z-index:999;pointer-events:none;
+  background:linear-gradient(160deg,#eef8f9,#f4fafb);
+  opacity:0;transition:opacity .22s ease;
+  animation:mgVelo .45s ease;
+}
+@keyframes mgVelo{from{opacity:1}to{opacity:0}}
+body.mg-exit::after{opacity:1}
+
+/* el contenido entra con un movimiento suave */
+body>header{animation:mgBajaSuave .55s cubic-bezier(.22,1,.36,1) backwards}
+@keyframes mgBajaSuave{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+body>section,body>main,body>footer{animation:mgSubeSuave .6s cubic-bezier(.22,1,.36,1) backwards}
+@keyframes mgSubeSuave{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+a.wa-float{animation:mgPopWa .5s cubic-bezier(.34,1.56,.64,1) .45s backwards}
+@keyframes mgPopWa{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}
+
+/* ---------- 2) APARICIÓN AL SUBIR O BAJAR (scroll) ---------- */
+.reveal{
+  opacity:0;transform:translateY(26px);
+  transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1);
+}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- 3) BARRA DE PROGRESO Y VOLVER ARRIBA ---------- */
+.mg-progress{
+  position:fixed;top:0;left:0;width:100%;height:3px;z-index:300;pointer-events:none;
+  background:linear-gradient(90deg,var(--cyan),var(--teal));
+  transform-origin:0 50%;transform:scaleX(0);
+}
+.mg-top{
+  position:fixed;right:33px;bottom:100px;z-index:89;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(255,255,255,.92);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  color:var(--navy);display:grid;place-items:center;cursor:pointer;
+  box-shadow:0 10px 26px -12px rgba(10,31,46,.45);
+  opacity:0;transform:translateY(14px);pointer-events:none;
+  transition:opacity .3s,transform .3s,color .2s,border-color .2s,box-shadow .3s;
+}
+.mg-top.show{opacity:1;transform:none;pointer-events:auto}
+.mg-top:hover{color:var(--teal);border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 14px 30px -12px rgba(22,137,156,.5)}
+.mg-top:active{transform:scale(.92)}
+.mg-top svg{width:20px;height:20px}
+
+/* ---------- 4) BOTONES: brillo, resorte y flechas ---------- */
+.btn{
+  position:relative;overflow:hidden;
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .3s,background .3s,border-color .3s,color .3s;
+}
+.btn::before{
+  content:'';position:absolute;top:0;left:-75%;width:45%;height:100%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.5),transparent);
+  transform:skewX(-20deg);pointer-events:none;transition:left .6s ease;
+}
+.btn:hover::before{left:130%}
+.btn:active{transform:translateY(-1px) scale(.96)}
+.btn svg{transition:transform .25s ease}
+.btn:hover svg{transform:translateX(3px)}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--teal)}
+
+.nav-cta:active{transform:scale(.95)}
+.nav-links a{transition:opacity .2s,color .2s,transform .2s}
+.nav-links a:not(.nav-cta):hover{color:var(--teal);transform:translateY(-1px)}
+.logo .mark{transition:transform .3s ease,box-shadow .35s}
+.logo:hover .mark{transform:scale(1.08);box-shadow:0 12px 26px -8px rgba(22,137,156,.7)}
+.burger span{transition:background .2s,transform .3s,opacity .3s}
+.burger:hover span{background:var(--teal)}
+
+/* ---------- 5) PÍLDORAS DE UBICACIÓN Y FILTROS ---------- */
+.pill{transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s,border-color .25s,background .25s,color .25s}
+.pill:hover{
+  transform:translateY(-4px);border-color:var(--cyan);background:var(--frost);
+  color:var(--teal);box-shadow:0 14px 26px -14px rgba(22,137,156,.55);
+}
+.pill svg{transition:transform .25s ease}
+.pill:hover svg{transform:scale(1.2)}
+.chip:hover{transform:translateY(-2px);color:var(--teal);box-shadow:0 10px 20px -12px rgba(13,43,62,.4)}
+.chip.active:hover{color:#fff}
+.chip:active{transform:scale(.94)}
+
+/* ---------- 6) TARJETAS DE SERVICIOS Y "POR QUÉ" ---------- */
+.card .ico{transition:transform .3s ease,background .35s,color .35s,box-shadow .35s}
+.card:hover .ico{
+  transform:scale(1.1);color:#fff;
+  background:linear-gradient(135deg,var(--cyan),var(--teal));
+  box-shadow:0 12px 24px -8px rgba(22,137,156,.55);
+}
+.card h3{transition:color .3s}
+.card:hover h3{color:var(--teal)}
+.why-item{transition:transform .3s}
+.why-item:hover{transform:translateX(8px)}
+.why-item .num{transition:transform .3s ease,box-shadow .35s}
+.why-item:hover .num{transform:scale(1.1);box-shadow:0 10px 22px -8px rgba(39,194,214,.6)}
+.float-tag{transition:transform .3s,box-shadow .3s}
+.float-tag:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 22px 44px -18px rgba(10,31,46,.4)}
+
+/* ---------- 7) CONTACTO Y FORMULARIOS ---------- */
+.ci-item .ic{transition:transform .3s ease,background .3s,color .3s}
+.ci-item:hover .ic{transform:scale(1.1);background:linear-gradient(135deg,var(--cyan),var(--teal));color:#fff}
+.ci-item strong{transition:color .2s}
+.ci-item:hover strong{color:var(--teal)}
+.field input:hover,.field textarea:hover,.field select:hover{border-color:rgba(22,137,156,.45)}
+
+/* ---------- 8) CARRUSEL DE PROMOCIONES ---------- */
+.car-btn:active{transform:translateY(-50%) scale(.9)}
+.car-dots button{transition:width .25s,background .25s,transform .25s}
+.car-dots button:hover{background:#fff;transform:scale(1.35)}
+.car-dots button.active:hover{transform:none}
+
+/* ---------- 9) CATÁLOGO Y PRODUCTO ---------- */
+.prod-price{transition:color .25s}
+.prod-card:hover .prod-price{color:var(--teal)}
+.prod-badge{transition:transform .3s}
+.prod-card:hover .prod-badge{transform:scale(1.07)}
+.prod-card:active{transform:translateY(-4px) scale(.99)}
+.specs .row{transition:background .2s}
+.specs .row:hover{background:var(--frost)}
+.feat{transition:transform .22s,border-color .22s,box-shadow .22s}
+.feat:hover{transform:translateY(-3px);border-color:var(--cyan);box-shadow:0 12px 22px -14px rgba(22,137,156,.5)}
+.pd-link{transition:gap .2s,color .2s}
+.pd-link:hover{gap:12px}
+.back{transition:color .2s,transform .2s}
+.back:hover{transform:translateX(-5px)}
+
+/* ---------- 10) MI CUENTA ---------- */
+.sum-card,.order-card,.equip-card{transition:transform .3s,box-shadow .3s,border-color .3s}
+.sum-card:hover,.order-card:hover,.equip-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.sum-ic,.equip-ic{transition:transform .3s ease,background .3s,color .3s}
+.sum-card:hover .sum-ic,.equip-card:hover .equip-ic{transform:scale(1.1);background:linear-gradient(135deg,var(--cyan),var(--teal));color:#fff}
+.olink{display:inline-flex;transition:transform .2s,color .2s}
+.olink:hover{transform:translateX(4px)}
+
+/* ---------- 11) PIE DE PÁGINA Y WHATSAPP ---------- */
+.foot-col a{transition:color .2s,transform .2s}
+.foot-col a:hover{transform:translateX(5px)}
+.wa-float::after{content:'';position:absolute;inset:0;border-radius:50%;animation:mgPulso 2.6s ease-out infinite}
+@keyframes mgPulso{
+  0%{box-shadow:0 0 0 0 rgba(37,211,102,.45)}
+  70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}
+  100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
+}
+.wa-float:hover{transform:scale(1.12)}
+.wa-float svg{transition:transform .3s}
+.wa-float:hover svg{transform:scale(1.08)}
+
+/* ---------- 12) DETALLES FINOS ---------- */
+::selection{background:rgba(39,194,214,.35);color:var(--ink)}
+html{scrollbar-color:var(--teal) #e8f3f5;scrollbar-width:thin}
+::-webkit-scrollbar{width:11px}
+::-webkit-scrollbar-track{background:#e8f3f5}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--cyan),var(--teal));border-radius:8px;border:3px solid #e8f3f5}
+a:focus-visible,button:focus-visible{outline:3px solid rgba(39,194,214,.55);outline-offset:3px;border-radius:8px}
+
+/* el subrayado del título de la portada se dibuja solo */
+.hero h1 .underline::after{
+  transform:scaleX(0);transform-origin:left;
+  animation:mgSubraya .7s cubic-bezier(.22,1,.36,1) .55s forwards;
+}
+@keyframes mgSubraya{to{transform:scaleX(1)}}
+
+/* ---------- 13) MENOS MOVIMIENTO (accesibilidad) ---------- */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+  body::after{display:none}
+  .reveal{opacity:1 !important;transform:none !important}
+}
