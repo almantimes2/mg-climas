@@ -118,7 +118,7 @@ a.wa-float{animation:mgPopWa .5s cubic-bezier(.34,1.56,.64,1) .45s backwards}
 /* ---------- 8) CARRUSEL DE PROMOCIONES ---------- */
 .car-btn:active{transform:translateY(-50%) scale(.9)}
 .car-dots button{transition:width .25s,background .25s,transform .25s}
-.car-dots button:hover{background:#fff;transform:scale(1.35)}
+.car-dots button:hover{transform:scale(1.35)}
 .car-dots button.active:hover{transform:none}
 
 /* ---------- 9) CATÁLOGO Y PRODUCTO ---------- */

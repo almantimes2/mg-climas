@@ -233,7 +233,7 @@
   /* ---------- PROMOS (carrusel) ---------- */
   #promociones{padding:110px 0;background:radial-gradient(900px 500px at 15% -10%,rgba(39,194,214,.14),transparent 60%),linear-gradient(180deg,#f4fafb,#eef8f9)}
   .carousel{position:relative;border-radius:26px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);background:var(--frost)}
-  .track{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+  .track{display:flex;transition:transform .7s cubic-bezier(.45,.05,.25,1)}
   .slide{position:relative;min-width:100%;aspect-ratio:8/3;background:var(--frost)}
   .slide>img{width:100%;height:100%;object-fit:cover;display:block}
   .slide .scrim{position:absolute;inset:0;background:linear-gradient(95deg,rgba(8,28,41,.82),rgba(8,28,41,.34) 50%,rgba(8,28,41,.04) 78%,transparent)}
@@ -243,20 +243,51 @@
   .slide-overlay .btn{padding:12px 24px;font-size:.97rem}
   .promo-badge{display:inline-flex;align-items:center;background:var(--amber);color:#fff;font-size:.76rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:7px 15px;border-radius:999px;box-shadow:0 8px 18px -6px rgba(232,155,60,.7)}
   .promo-badge.nuevo{background:var(--cyan);box-shadow:0 8px 18px -6px rgba(39,194,214,.7)}
-  .car-btn{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:none;background:rgba(255,255,255,.92);color:var(--navy);display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 24px -8px rgba(8,28,41,.5);transition:transform .2s,background .2s;z-index:6}
+  .car-btn{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:none;background:rgba(255,255,255,.92);color:var(--navy);display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 24px -8px rgba(8,28,41,.5);transition:transform .28s ease,background .2s,opacity .28s ease;z-index:6}
   .car-btn:hover{background:#fff;transform:translateY(-50%) scale(1.09)}
   .car-btn svg{width:24px;height:24px}
   .car-btn.prev{left:18px}
   .car-btn.next{right:18px}
+  /* flechas ocultas hasta acercar el cursor (solo en equipos con mouse) */
+  @media (hover:hover){
+    .car-btn{opacity:0}
+    .car-btn.prev{transform:translateY(-50%) translateX(-14px)}
+    .car-btn.next{transform:translateY(-50%) translateX(14px)}
+    .carousel:hover .car-btn,.carousel:focus-within .car-btn{opacity:1;transform:translateY(-50%)}
+    .carousel:hover .car-btn:hover{transform:translateY(-50%) scale(1.09)}
+  }
   .car-dots{position:absolute;bottom:18px;right:24px;display:flex;gap:9px;z-index:6}
-  .car-dots button{width:9px;height:9px;border-radius:999px;border:none;background:rgba(255,255,255,.55);cursor:pointer;padding:0;transition:width .25s,background .25s}
-  .car-dots button.active{background:#fff;width:28px}
+  .car-dots button{width:9px;height:9px;border-radius:999px;border:none;background:rgba(13,43,62,.25);cursor:pointer;padding:0;transition:width .25s,background .25s}
+  .car-dots button.active{background:var(--navy);width:28px}
+
+  /* carrusel de equipos: fondo animado FIJO — solo se desliza el contenido */
+  .carousel-prod{background:linear-gradient(120deg,#f4fafb,#dff4f6)}
+  .carousel-prod::before{content:'';position:absolute;inset:-30%;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(42% 40% at 80% 25%, rgba(39,194,214,.34), transparent 65%),
+      radial-gradient(34% 38% at 28% 18%, rgba(22,137,156,.18), transparent 70%),
+      radial-gradient(30% 34% at 15% 82%, rgba(232,155,60,.16), transparent 70%);
+    filter:blur(28px);
+    animation:mgFondoCarrusel 16s ease-in-out infinite alternate}
+  @keyframes mgFondoCarrusel{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-4%,4%,0) scale(1.12)}}
+  /* velo claro FIJO (no se desliza) y DETRÁS del contenido: legibilidad sin costuras */
+  .carousel-prod::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(95deg, rgba(244,250,251,.92) 6%, rgba(244,250,251,.55) 46%, rgba(244,250,251,.08) 70%, transparent 82%)}
+  /* la foto y el texto van POR ENCIMA del velo y del fondo animado */
+  .carousel-prod .track{position:relative;z-index:2}
+  .slide-prod{background:none}
+  .slide-prod .scrim{display:none}
+  .slide-prod>img{object-fit:contain;object-position:calc(100% - 4%) center;padding:22px 0}
+  .slide-prod .slide-overlay h3{color:var(--navy)}
+  .slide-prod .slide-overlay p{color:var(--muted)}
   @media(max-width:640px){
     .slide{aspect-ratio:4/3}
     .slide .scrim{background:linear-gradient(0deg,rgba(8,28,41,.86),rgba(8,28,41,.25) 55%,transparent)}
     .slide-overlay{padding:20px}
     .car-btn{width:42px;height:42px}
     .car-dots{right:50%;transform:translateX(50%)}
+    .slide-prod>img{object-position:center 12%;padding:14px}
+    .slide-prod .scrim{background:linear-gradient(0deg, rgba(244,250,251,.95), rgba(244,250,251,.6) 55%, transparent)}
   }
 
   /* ---------- FOOTER ---------- */
@@ -446,46 +477,46 @@
     <div class="sec-head reveal">
       <p class="eyebrow">Novedades</p>
       <h2>Promociones y novedades</h2>
-      <p>Conoce nuestras ofertas vigentes y lo más nuevo de MG Climas. Usa las flechas para ver más.</p>
+      <p>Estos son los equipos con mejor precio de nuestro catálogo. Usa las flechas para ver más.</p>
     </div>
 
-    <div class="carousel reveal">
+    <div class="carousel carousel-prod reveal">
       <div class="track" id="promoTrack">
 
-        <div class="slide">
-          <img class="promo-img" src="img/promo-1.jpg" alt="Promoción 1" onerror="this.onerror=null;this.src=window.PROMO_FALLBACK">
+        <div class="slide slide-prod">
+          <img class="promo-img" src="img/productos/nex-onoff.webp" alt="Minisplit NEX On/Off" onerror="this.onerror=null;this.src=window.PROMO_FALLBACK">
           <div class="scrim"></div>
           <div class="slide-overlay">
-            <span class="promo-badge">Oferta</span>
-            <h3>Título de tu promoción 1</h3>
-            <p>Describe aquí los detalles de la oferta: qué incluye, condiciones y hasta cuándo es válida.</p>
-            <a href="#contacto" class="btn btn-primary">Más información
+            <span class="promo-badge">Desde $ 4,717</span>
+            <h3>NEX On/Off — el más económico</h3>
+            <p>Frío y calor con compresor GMCC de alto rendimiento. El precio más bajo de nuestro catálogo para vencer el calor sin gastar de más.</p>
+            <a href="producto.html?p=nex-onoff" class="btn btn-primary">Ver producto
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
         </div>
 
-        <div class="slide">
-          <img class="promo-img" src="img/promo-2.jpg" alt="Promoción 2" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=window.PROMO_FALLBACK">
+        <div class="slide slide-prod">
+          <img class="promo-img" src="img/productos/x-life-onoff.png" alt="Minisplit X Life On/Off" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=window.PROMO_FALLBACK">
           <div class="scrim"></div>
           <div class="slide-overlay">
-            <span class="promo-badge nuevo">Nuevo</span>
-            <h3>Título de tu promoción 2</h3>
-            <p>Cuéntales a tus clientes sobre un equipo nuevo o un servicio que quieras destacar.</p>
-            <a href="#contacto" class="btn btn-primary">Más información
+            <span class="promo-badge nuevo">Desde $ 4,920</span>
+            <h3>X Life On/Off — silencio total</h3>
+            <p>El On/Off más silencioso de Mirage: desde 28 dB en interior. Duerme fresco sin ruido, a precio accesible.</p>
+            <a href="producto.html?p=x-life-onoff" class="btn btn-primary">Ver producto
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
         </div>
 
-        <div class="slide">
-          <img class="promo-img" src="img/promo-3.jpg" alt="Promoción 3" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=window.PROMO_FALLBACK">
+        <div class="slide slide-prod">
+          <img class="promo-img" src="img/productos/inverter-x32.png" alt="Minisplit Inverter X32" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=window.PROMO_FALLBACK">
           <div class="scrim"></div>
           <div class="slide-overlay">
-            <span class="promo-badge">Promoción</span>
-            <h3>Título de tu promoción 3</h3>
-            <p>Anuncia un paquete de mantenimiento, un descuento por temporada o lo que tú decidas.</p>
-            <a href="#contacto" class="btn btn-primary">Más información
+            <span class="promo-badge">Desde $ 5,055</span>
+            <h3>Inverter X32 — ahorro de luz</h3>
+            <p>El Inverter más accesible: refrigerante ecológico R32 y gran flujo de aire para enfriar rápido gastando menos electricidad.</p>
+            <a href="producto.html?p=inverter-x32" class="btn btn-primary">Ver producto
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>

@@ -51,10 +51,32 @@ header .nav{
 header.scrolled{background:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;padding:10px 0}
 header.scrolled .nav{background:rgba(255,255,255,.62)}
 
-/* menú móvil también de vidrio */
-@media(max-width:900px){
-  .nav-links{background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(28px) saturate(1.5);backdrop-filter:blur(28px) saturate(1.5)}
+/* menú móvil desplegable: panel de vidrio real (aplica al abrirse, en
+   cualquier página sin importar su punto de quiebre) */
+.nav-links.open{
+  background:rgba(255,255,255,.5);
+  -webkit-backdrop-filter:blur(30px) saturate(1.7);backdrop-filter:blur(30px) saturate(1.7);
+  border-left:1px solid var(--vidrio-borde);
+  border-top-left-radius:26px;border-bottom-left-radius:26px;
+  box-shadow:-24px 0 60px -22px rgba(10,31,46,.42), inset 1px 1px 0 rgba(255,255,255,.7);
 }
+/* los enlaces dentro del panel, como pastillas de vidrio al tocarlos */
+.nav-links.open a:not(.nav-cta){
+  padding:9px 20px;border-radius:999px;transition:background .25s,color .2s;
+}
+.nav-links.open a:not(.nav-cta):hover,
+.nav-links.open a:not(.nav-cta):active{
+  background:rgba(255,255,255,.55);color:var(--teal);
+}
+/* botón de menú (hamburguesa): fondo de vidrio para que combine */
+.burger{
+  width:44px;height:44px;border-radius:13px;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.42);
+  -webkit-backdrop-filter:blur(12px) saturate(1.4);backdrop-filter:blur(12px) saturate(1.4);
+  border:1px solid var(--vidrio-borde);
+  box-shadow:var(--vidrio-brillo);
+}
+.burger span{margin:0 auto}
 
 /* ---------- 3) RECETA DE VIDRIO PARA TARJETAS Y PANELES ---------- */
 .card,.prod-card,.ci-item,.contact-form,.login-card,
