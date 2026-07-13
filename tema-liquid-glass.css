@@ -54,11 +54,11 @@ header.scrolled .nav{background:rgba(255,255,255,.62)}
 /* menú móvil desplegable: panel de vidrio real (aplica al abrirse, en
    cualquier página sin importar su punto de quiebre) */
 .nav-links.open{
-  background:rgba(255,255,255,.5);
-  -webkit-backdrop-filter:blur(30px) saturate(1.7);backdrop-filter:blur(30px) saturate(1.7);
+  /* fondo SÓLIDO para que no se confunda con el texto de la página detrás */
+  background:linear-gradient(160deg,#ffffff,#eef8f9);
   border-left:1px solid var(--vidrio-borde);
   border-top-left-radius:26px;border-bottom-left-radius:26px;
-  box-shadow:-24px 0 60px -22px rgba(10,31,46,.42), inset 1px 1px 0 rgba(255,255,255,.7);
+  box-shadow:-24px 0 60px -22px rgba(10,31,46,.42), inset 1px 1px 0 rgba(255,255,255,.9);
 }
 /* los enlaces dentro del panel, como pastillas de vidrio al tocarlos */
 .nav-links.open a:not(.nav-cta){
@@ -68,13 +68,12 @@ header.scrolled .nav{background:rgba(255,255,255,.62)}
 .nav-links.open a:not(.nav-cta):active{
   background:rgba(255,255,255,.55);color:var(--teal);
 }
-/* botón de menú (hamburguesa): fondo de vidrio para que combine */
+/* botón de menú (hamburguesa): fondo sólido claro, sin transparencia */
 .burger{
   width:44px;height:44px;border-radius:13px;align-items:center;justify-content:center;
-  background:rgba(255,255,255,.42);
-  -webkit-backdrop-filter:blur(12px) saturate(1.4);backdrop-filter:blur(12px) saturate(1.4);
+  background:#ffffff;
   border:1px solid var(--vidrio-borde);
-  box-shadow:var(--vidrio-brillo);
+  box-shadow:0 6px 16px -8px rgba(10,31,46,.35), inset 0 1px 0 rgba(255,255,255,.9);
 }
 .burger span{margin:0 auto}
 

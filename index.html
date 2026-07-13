@@ -281,13 +281,19 @@
   .slide-prod .slide-overlay h3{color:var(--navy)}
   .slide-prod .slide-overlay p{color:var(--muted)}
   @media(max-width:640px){
-    .slide{aspect-ratio:4/3}
+    .slide{aspect-ratio:3/4}
     .slide .scrim{background:linear-gradient(0deg,rgba(8,28,41,.86),rgba(8,28,41,.25) 55%,transparent)}
-    .slide-overlay{padding:20px}
-    .car-btn{width:42px;height:42px}
-    .car-dots{right:50%;transform:translateX(50%)}
-    .slide-prod>img{object-position:center 12%;padding:14px}
-    .slide-prod .scrim{background:linear-gradient(0deg, rgba(244,250,251,.95), rgba(244,250,251,.6) 55%, transparent)}
+    /* en móvil se navega deslizando: ocultamos las flechas para no encimar el texto */
+    .car-btn{display:none}
+    .car-dots{right:16px;bottom:12px;transform:none}
+    /* foto arriba, texto abajo — sin sobreponerse */
+    .slide-prod>img{height:34%;object-fit:contain;object-position:center top;padding:14px 14px 0}
+    /* velo vertical fijo desde abajo para que el texto se lea */
+    .carousel-prod::after{background:linear-gradient(0deg, rgba(244,250,251,.97) 52%, rgba(244,250,251,.72) 66%, transparent 84%)}
+    .slide-prod .slide-overlay{padding:18px;gap:8px}
+    .slide-prod .slide-overlay h3{font-size:1.35rem}
+    .slide-prod .slide-overlay p{font-size:.9rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .slide-prod .slide-overlay .btn{padding:11px 20px;font-size:.92rem}
   }
 
   /* ---------- FOOTER ---------- */
@@ -332,8 +338,18 @@
   @media(max-width:560px){
     .grid-services,.foot-grid{grid-template-columns:1fr}
     .hero-stats{flex-wrap:wrap;gap:22px}
-    .float-tag.t1{left:0}.float-tag.t2{right:0}
+    /* tarjeta del inicio: un poco más ancha y con aire para las etiquetas */
+    .hero-visual{width:100%;max-width:330px;margin:20px auto 42px}
+    .float-tag{font-size:.8rem;padding:9px 13px;gap:8px}
+    .float-tag .ic{width:26px;height:26px}
+    /* las etiquetas enmarcan la tarjeta (una arriba, otra abajo) sin taparla */
+    .float-tag.t1{top:-16px;left:-6px;right:auto}
+    .float-tag.t2{bottom:-18px;right:-6px;left:auto}
+    /* vaivén más corto para que no se metan sobre el contenido al animar */
+    .float-tag.t1{animation:floatyMovil 5s ease-in-out infinite}
+    .float-tag.t2{animation:floatyMovil 6s ease-in-out infinite .8s}
   }
+  @keyframes floatyMovil{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 </style>
 <link rel="stylesheet" href="mejoras.css">
 <link rel="stylesheet" href="tema-liquid-glass.css">
