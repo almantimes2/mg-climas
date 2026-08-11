@@ -220,6 +220,14 @@
       +'<a class="btn btn-primary" href="catalogo.html">Ver catálogo</a></div>';
   } else {
     document.title = p.name + ' | G2 Climas';
+
+    // cada ?p=slug es una URL distinta: sin esto el canonical fijo del <head>
+    // le diria a Google que las 9 fichas son la misma pagina y solo indexaria una
+    var canon = 'https://g2climas.com/producto.html?p=' + encodeURIComponent(p.slug);
+    var linkCanon = document.querySelector('link[rel="canonical"]');
+    if(linkCanon) linkCanon.setAttribute('href', canon);
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if(metaDesc) metaDesc.setAttribute('content', p.short);
     var msg = "Hola G2 Climas, me interesa comprar el " + p.name + ". ¿Me pueden dar precio y disponibilidad?";
     var buyUrl = "https://wa.me/" + (window.WA_NUMBER||"") + "?text=" + encodeURIComponent(msg);
 
