@@ -226,7 +226,7 @@
   }
   function card(p){
     var img = p.image || "";
-    return '<a class="prod-card" href="producto.html?p='+encodeURIComponent(p.slug)+'">'
+    return '<a class="prod-card" href="producto/'+encodeURIComponent(p.slug)+'/">'
       + '<div class="prod-thumb">'
       + (p.badge?'<span class="prod-badge">'+p.badge+'</span>':'')
       + '<img src="'+img+'" alt="'+p.name+'" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=window.PRODUCT_FALLBACK">'
