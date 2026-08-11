@@ -1,5 +1,5 @@
 /* ============================================================
-   MEJORAS DE MG CLIMAS (animaciones) — se carga en todas las páginas
+   MEJORAS DE G2 CLIMAS (animaciones) — se carga en todas las páginas
    ------------------------------------------------------------
    • Aparición de elementos al hacer scroll (al subir Y al bajar).
    • Transición suave al cambiar de página (adiós al corte brusco).

@@ -1,5 +1,5 @@
 /* ============================================================
-   PRODUCTOS DE MG CLIMAS  (este archivo controla el catálogo)
+   PRODUCTOS DE G2 CLIMAS  (este archivo controla el catálogo)
    ------------------------------------------------------------
    • Para AGREGAR un producto: copia un bloque { ... } completo,
      pégalo dentro de la lista y cambia sus datos.
