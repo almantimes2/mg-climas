@@ -774,5 +774,10 @@
   })();
 </script>
 <script src="mejoras.js"></script>
+<!-- Analitica de Cloudflare. El token no es secreto: viaja en el HTML de la
+     pagina. Se instala por JS porque los registros DNS estan en "DNS only"
+     y la inyeccion automatica de Cloudflare requiere el proxy activo. -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js"
+  data-cf-beacon='{"token": "4d80ffb0d65c43a680b3eb75e328bd27"}'></script>
 </body>
 </html>
