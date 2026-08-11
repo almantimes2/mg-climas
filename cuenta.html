@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mi cuenta | MG Climas</title>
-<meta name="description" content="Panel de cliente de MG Climas: tus compras, estados, entregas y productos.">
+<title>Mi cuenta | G2 Climas</title>
+<meta name="description" content="Panel de cliente de G2 Climas: tus compras, estados, entregas y productos.">
 <meta name="theme-color" content="#16899c">
 <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="%2316899c"/><g fill="none" stroke="%23ffffff" stroke-width="2.2" stroke-linecap="round"><path d="M4 9.5h11a2.5 2.5 0 1 0-2.5-2.5"/><path d="M4 14.5h13a2.5 2.5 0 1 1-2.5 2.5"/></g></svg>'>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -130,7 +130,7 @@
   <div class="wrap nav">
     <a href="index.html" class="logo">
       <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 8h13a3 3 0 1 0-3-3"/><path d="M3 14h16a3 3 0 1 1-3 3"/><path d="M3 11h9a2.5 2.5 0 1 0-2.5-2.5"/></svg></span>
-      MG Climas
+      G2 Climas
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="index.html#servicios">Servicios</a>
@@ -172,7 +172,7 @@
 </section>
 
 <footer>
-  <div class="wrap">© <span id="year"></span> MG Climas · <a href="index.html">Inicio</a> · <a href="catalogo.html">Catálogo</a></div>
+  <div class="wrap">© <span id="year"></span> G2 Climas · <a href="index.html">Inicio</a> · <a href="catalogo.html">Catálogo</a></div>
 </footer>
 
 <script>
@@ -240,7 +240,7 @@
   }
 
   function equipCard(p){
-    var msg = "Hola MG Climas, quiero agendar mantenimiento para mi "+p.nombre+".";
+    var msg = "Hola G2 Climas, quiero agendar mantenimiento para mi "+p.nombre+".";
     var buy = "https://wa.me/"+WA+"?text="+encodeURIComponent(msg);
     return '<div class="equip-card">'
       + '<div class="equip-head"><div class="equip-ic">'+ICON.ac+'</div>'
@@ -272,7 +272,7 @@
   document.getElementById('ordersCount').textContent = pedidos.length;
   document.getElementById('equip').innerHTML = productos.map(equipCard).join('');
   document.getElementById('equipCount').textContent = productos.length;
-  document.getElementById('helpBtn').href = "https://wa.me/"+WA+"?text="+encodeURIComponent("Hola MG Climas, tengo una pregunta sobre mi cuenta.");
+  document.getElementById('helpBtn').href = "https://wa.me/"+WA+"?text="+encodeURIComponent("Hola G2 Climas, tengo una pregunta sobre mi cuenta.");
 </script>
 <script src="mejoras.js"></script>
 </body>
