@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Pantallas de demostracion, no deben salir en buscadores
+Disallow: /login.html
+Disallow: /cuenta.html
+
+Sitemap: https://g2climas.com/sitemap.xml
