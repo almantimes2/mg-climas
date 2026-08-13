@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img"
+     aria-label="Mantenimiento profundo de minisplit">
+  <defs>
+    <linearGradient id="cuerpo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#eaf6f8"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#27c2d6" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#27c2d6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <g transform="translate(540,540) scale(1.22) translate(-540,-540)">
+  <circle cx="540" cy="530" r="360" fill="url(#halo)"/>
+
+  <!-- unidad interior -->
+  <g>
+    <rect x="150" y="420" width="780" height="190" rx="46" fill="url(#cuerpo)"
+          stroke="#16899c" stroke-width="7"/>
+    <path d="M150 556h780" stroke="#16899c" stroke-width="5" opacity=".45"/>
+    <rect x="214" y="576" width="652" height="26" rx="13" fill="#dff4f6"
+          stroke="#16899c" stroke-width="5"/>
+    <circle cx="838" cy="492" r="13" fill="#27c2d6"/>
+  </g>
+
+  <!-- flujo de aire frio -->
+  <g fill="none" stroke="#27c2d6" stroke-width="9" stroke-linecap="round" opacity=".85">
+    <path d="M330 672c46 34 46 74 0 108"/>
+    <path d="M470 690c56 40 56 88 0 128"/>
+    <path d="M610 672c46 34 46 74 0 108"/>
+  </g>
+
+  <!-- destellos de limpieza -->
+  <g fill="#27c2d6">
+    <path d="M232 268c9 52 17 60 69 69-52 9-60 17-69 69-9-52-17-60-69-69 52-9 60-17 69-69z"/>
+    <path d="M872 636c6 36 12 42 48 48-36 6-42 12-48 48-6-36-12-42-48-48 36-6 42-12 48-48z"/>
+  </g>
+  <path d="M432 196c5 29 9 33 38 38-29 5-33 9-38 38-5-29-9-33-38-38 29-5 33-9 38-38z"
+        fill="#e89b3c"/>
+  </g>
+</svg>
