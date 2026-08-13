@@ -305,6 +305,8 @@
     .slide-prod .slide-overlay{padding:18px;gap:8px}
     .slide-prod .slide-overlay h3{font-size:1.35rem}
     .slide-prod .slide-overlay p{font-size:.9rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    /* la oferta enumera lo que incluye: con 2 lineas se cortaba a media lista */
+    .slide-prod.slide-oferta .slide-overlay p{-webkit-line-clamp:6}
     .slide-prod .slide-overlay .btn{padding:11px 20px;font-size:.92rem}
   }
 
@@ -533,11 +535,24 @@
     <div class="sec-head reveal">
       <p class="eyebrow">Novedades</p>
       <h2>Promociones y novedades</h2>
-      <p>Estos son los equipos con mejor precio de nuestro catálogo. Usa las flechas para ver más.</p>
+      <p>Nuestra promoción vigente y los equipos con mejor precio del catálogo. Usa las flechas para ver más.</p>
     </div>
 
     <div class="carousel carousel-prod reveal">
       <div class="track" id="promoTrack">
+
+        <div class="slide slide-prod slide-oferta">
+          <img class="promo-img" src="img/promo-mantenimiento.svg" alt="Mantenimiento profundo de minisplit">
+          <div class="scrim"></div>
+          <div class="slide-overlay">
+            <span class="promo-badge">Oferta de verano</span>
+            <h3>Mantenimiento profundo a $700</h3>
+            <p>Lavado profundo de condensadora y evaporadora, limpieza de filtros y destape de drenaje, más chequeo de refrigerante y voltaje. Tu equipo enfría mejor y gasta menos luz.</p>
+            <a href="https://wa.me/526145137488?text=Hola%20G2%20Climas%2C%20quiero%20la%20oferta%20de%20verano%3A%20mantenimiento%20profundo%20a%20%24700." target="_blank" rel="noopener" class="btn btn-primary">Agendar por WhatsApp
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
 
         <div class="slide slide-prod">
           <img class="promo-img" src="img/productos/nex-onoff.webp" alt="Minisplit NEX On/Off" onerror="this.onerror=null;this.src=window.PROMO_FALLBACK">
@@ -546,7 +561,7 @@
             <span class="promo-badge">Desde $ 4,717</span>
             <h3>NEX On/Off — el más económico</h3>
             <p>Frío y calor con compresor GMCC de alto rendimiento. El precio más bajo de nuestro catálogo para vencer el calor sin gastar de más.</p>
-            <a href="producto.html?p=nex-onoff" class="btn btn-primary">Ver producto
+            <a href="producto/nex-onoff/" class="btn btn-primary">Ver producto
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
@@ -559,7 +574,7 @@
             <span class="promo-badge nuevo">Desde $ 4,920</span>
             <h3>X Life On/Off — silencio total</h3>
             <p>El On/Off más silencioso de Mirage: desde 28 dB en interior. Duerme fresco sin ruido, a precio accesible.</p>
-            <a href="producto.html?p=x-life-onoff" class="btn btn-primary">Ver producto
+            <a href="producto/x-life-onoff/" class="btn btn-primary">Ver producto
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
@@ -572,7 +587,7 @@
             <span class="promo-badge">Desde $ 5,055</span>
             <h3>Inverter X32 — ahorro de luz</h3>
             <p>El Inverter más accesible: refrigerante ecológico R32 y gran flujo de aire para enfriar rápido gastando menos electricidad.</p>
-            <a href="producto.html?p=inverter-x32" class="btn btn-primary">Ver producto
+            <a href="producto/inverter-x32/" class="btn btn-primary">Ver producto
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
