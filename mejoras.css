@@ -75,8 +75,10 @@ a.wa-float{animation:mgPopWa .5s cubic-bezier(.34,1.56,.64,1) .45s backwards}
 .nav-cta:active{transform:scale(.95)}
 .nav-links a{transition:opacity .2s,color .2s,transform .2s}
 .nav-links a:not(.nav-cta):hover{color:var(--teal);transform:translateY(-1px)}
-.logo .mark{transition:transform .3s ease,box-shadow .35s}
-.logo:hover .mark{transform:scale(1.08);box-shadow:0 12px 26px -8px rgba(22,137,156,.7)}
+/* Sin box-shadow: la marca ya no es una caja, es el SVG suelto, y la
+   sombra se proyectaba sobre el rectangulo invisible del contenedor. */
+.logo .mark{transition:transform .3s ease}
+.logo:hover .mark{transform:scale(1.06)}
 .burger span{transition:background .2s,transform .3s,opacity .3s}
 .burger:hover span{background:var(--teal)}
 
