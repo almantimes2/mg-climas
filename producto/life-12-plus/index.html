@@ -29,14 +29,14 @@
 <meta property="og:image" content="https://g2climas.com/img/productos/life-12-plus.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#12a094">
-<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="%2312a094"/><g fill="none" stroke="%23ffffff" stroke-width="2.6" stroke-linecap="round" transform="translate(0,4.5)"><path d="M2 10Q16-.2 30 10"/><path d="M5.9 15.4Q16 8 26.1 15.4" opacity=".62"/><path d="M9.7 20.8Q16 16.2 22.3 20.8" opacity=".36"/></g></svg>'>
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="%2312a094"/><g fill="none" stroke="%23ffffff" stroke-width="2.7" stroke-linecap="round" transform="translate(-1,6)scale(1.06)"><path d="M2 8Q17-.4 32 8"/><path d="M4 13.5Q17 6.3 30 13.5" opacity=".64"/><path d="M6 19Q17 12.8 28 19" opacity=".4"/></g></svg>'>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0a1f2e;--navy:#0d2b3e;--teal:#16899c;--cyan:#27c2d6;--frost:#dff4f6;
-    --sand:#e8c79a;--amber:#e89b3c;--marca:#12a094;--marca-clara:#5fe3cf;--paper:#f4fafb;--white:#fff;--muted:#5d7480;
+    --ink:#0a1f2e;--navy:#0d2b3e;--teal:#0b8b7d;--cyan:#5fe3cf;--frost:#dcf6f0;
+    --sand:#e8c79a;--amber:#e89b3c;--marca:#12a094;--marca-clara:#5fe3cf;--paper:#f4fbf9;--white:#fff;--muted:#5d7480;
     --line:rgba(13,43,62,.12);--shadow:0 18px 50px -20px rgba(10,31,46,.35);
     --display:'Bricolage Grotesque',sans-serif;--body:'Hanken Grotesk',sans-serif;
   }
@@ -48,13 +48,13 @@
   .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
 
   header{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .35s ease;padding:18px 0}
-  header.scrolled{background:rgba(244,250,251,.85);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:12px 0}
+  header.scrolled{background:rgba(244,251,249,.85);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:12px 0}
   .nav{display:flex;align-items:center;justify-content:space-between}
   .logo{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:800;font-size:1.35rem;letter-spacing:-.03em}
   /* Logo: ondas sueltas (sin caja) + lockup G2Climas a dos tonos.
      La caja redondeada es solo para el favicon y el ícono de app. */
-  .logo .mark{width:42px;height:30px;display:grid;place-items:center;flex-shrink:0;color:var(--marca)}
-  .logo .mark svg{width:42px;height:30px}
+  .logo .mark{width:44px;height:26px;display:grid;place-items:center;flex-shrink:0;color:var(--marca)}
+  .logo .mark svg{width:44px;height:26px}
   .logo .wm{color:var(--marca)}
   .logo .wm b{color:var(--ink);font-weight:inherit}
   /* Sobre el footer oscuro se invierte, como en el manual de marca */
@@ -74,8 +74,8 @@
   .burger span{width:26px;height:2px;background:var(--navy);border-radius:2px;transition:.3s}
 
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 28px;border-radius:999px;font-weight:600;font-size:1rem;transition:transform .2s,box-shadow .25s;cursor:pointer;border:none}
-  .btn-primary{background:linear-gradient(135deg,var(--cyan),var(--teal));color:#fff;box-shadow:0 14px 30px -12px rgba(22,137,156,.7)}
-  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 36px -12px rgba(22,137,156,.8)}
+  .btn-primary{background:linear-gradient(135deg,var(--cyan),var(--teal));color:#fff;box-shadow:0 14px 30px -12px rgba(11,139,125,.7)}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 36px -12px rgba(11,139,125,.8)}
   .btn-buy{background:#25d366;color:#fff;box-shadow:0 14px 30px -12px rgba(37,211,102,.8)}
   .btn-buy:hover{transform:translateY(-3px);box-shadow:0 20px 36px -12px rgba(37,211,102,.9)}
   .btn-ghost{background:var(--white);color:var(--navy);border:1px solid var(--line)}
@@ -85,11 +85,11 @@
   .crumb{font-size:.9rem;color:var(--muted);margin-bottom:26px}
   .crumb a{color:var(--teal);font-weight:600}
   .pd-grid{display:grid;grid-template-columns:1.02fr 1fr;gap:50px;align-items:start}
-  .pd-media{background:linear-gradient(160deg,#fff,#eaf6f8);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow);position:sticky;top:100px}
+  .pd-media{background:linear-gradient(160deg,#fff,#e9f8f3);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow);position:sticky;top:100px}
   .pd-media img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
   .pd-cat{font-size:.8rem;font-weight:700;color:var(--teal);letter-spacing:.06em;text-transform:uppercase}
   .pd-body h1{font-size:clamp(1.8rem,4vw,2.7rem);margin:10px 0 6px}
-  .pd-badge{display:inline-flex;align-items:center;background:var(--frost);color:var(--teal);font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;padding:6px 14px;border-radius:999px;margin-bottom:6px;box-shadow:inset 0 0 0 1px rgba(22,137,156,.2)}
+  .pd-badge{display:inline-flex;align-items:center;background:var(--frost);color:var(--teal);font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;padding:6px 14px;border-radius:999px;margin-bottom:6px;box-shadow:inset 0 0 0 1px rgba(11,139,125,.2)}
   .pd-price{font-family:var(--display);font-weight:800;font-size:1.9rem;color:var(--navy);margin:14px 0 6px}
   .pd-short{color:var(--muted);font-size:1.06rem;margin-bottom:24px}
   .buy-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:14px}
@@ -102,7 +102,7 @@
   /* tabla de versiones y precios (capacidad / voltaje / precio) */
   .vers{border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:30px;background:#fff}
   .vers .vrow{display:grid;grid-template-columns:1.3fr .9fr 1fr;gap:12px;padding:12px 18px;font-size:.95rem;transition:background .2s}
-  .vers .vrow:nth-child(even){background:rgba(223,244,246,.4)}
+  .vers .vrow:nth-child(even){background:rgba(220,246,240,.4)}
   .vers .vrow:hover{background:var(--frost)}
   .vers .vrow span:first-child{color:var(--navy);font-weight:600}
   .vers .vrow span:nth-child(2){color:var(--muted)}
@@ -112,7 +112,7 @@
   .vers-note{font-size:.83rem;color:var(--muted);margin:-20px 0 30px}
   .specs{border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:30px;background:#fff}
   .specs .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:13px 18px;font-size:.95rem}
-  .specs .row:nth-child(odd){background:rgba(223,244,246,.4)}
+  .specs .row:nth-child(odd){background:rgba(220,246,240,.4)}
   .specs .row .k{color:var(--muted);font-weight:500}
   .specs .row .v{color:var(--navy);font-weight:600;text-align:right}
   .feat-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
@@ -184,7 +184,7 @@
 <header id="header">
   <div class="wrap nav">
     <a href="index.html" class="logo">
-      <span class="mark"><svg viewBox="0 0 32 23" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M2 10Q16-.2 30 10"/><path d="M5.9 15.4Q16 8 26.1 15.4" opacity=".55"/><path d="M9.7 20.8Q16 16.2 22.3 20.8" opacity=".3"/></svg></span><span class="wm"><b>G2</b>Climas</span>
+      <span class="mark"><svg viewBox="0 0 34 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M2 8Q17-.4 32 8"/><path d="M4 13.5Q17 6.3 30 13.5" opacity=".6"/><path d="M6 19Q17 12.8 28 19" opacity=".36"/></svg></span><span class="wm"><b>G2</b>Climas</span>
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="index.html#servicios">Servicios</a>
@@ -208,7 +208,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="logo"><span class="mark"><svg viewBox="0 0 32 23" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M2 10Q16-.2 30 10"/><path d="M5.9 15.4Q16 8 26.1 15.4" opacity=".55"/><path d="M9.7 20.8Q16 16.2 22.3 20.8" opacity=".3"/></svg></span><span class="wm"><b>G2</b>Climas</span></div>
+        <div class="logo"><span class="mark"><svg viewBox="0 0 34 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M2 8Q17-.4 32 8"/><path d="M4 13.5Q17 6.3 30 13.5" opacity=".6"/><path d="M6 19Q17 12.8 28 19" opacity=".36"/></svg></span><span class="wm"><b>G2</b>Climas</span></div>
         <p>Especialistas en climatización para hogar y negocio en la Comarca Lagunera. Frescura confiable, todo el año.</p>
       </div>
       <div class="foot-col">

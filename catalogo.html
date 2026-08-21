@@ -18,14 +18,14 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#12a094">
-<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="%2312a094"/><g fill="none" stroke="%23ffffff" stroke-width="2.6" stroke-linecap="round" transform="translate(0,4.5)"><path d="M2 10Q16-.2 30 10"/><path d="M5.9 15.4Q16 8 26.1 15.4" opacity=".62"/><path d="M9.7 20.8Q16 16.2 22.3 20.8" opacity=".36"/></g></svg>'>
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="%2312a094"/><g fill="none" stroke="%23ffffff" stroke-width="2.7" stroke-linecap="round" transform="translate(-1,6)scale(1.06)"><path d="M2 8Q17-.4 32 8"/><path d="M4 13.5Q17 6.3 30 13.5" opacity=".64"/><path d="M6 19Q17 12.8 28 19" opacity=".4"/></g></svg>'>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0a1f2e;--navy:#0d2b3e;--teal:#16899c;--cyan:#27c2d6;--frost:#dff4f6;
-    --sand:#e8c79a;--amber:#e89b3c;--marca:#12a094;--marca-clara:#5fe3cf;--paper:#f4fafb;--white:#fff;--muted:#5d7480;
+    --ink:#0a1f2e;--navy:#0d2b3e;--teal:#0b8b7d;--cyan:#5fe3cf;--frost:#dcf6f0;
+    --sand:#e8c79a;--amber:#e89b3c;--marca:#12a094;--marca-clara:#5fe3cf;--paper:#f4fbf9;--white:#fff;--muted:#5d7480;
     --line:rgba(13,43,62,.12);--shadow:0 18px 50px -20px rgba(10,31,46,.35);
     --display:'Bricolage Grotesque',sans-serif;--body:'Hanken Grotesk',sans-serif;
   }
@@ -38,13 +38,13 @@
 
   /* NAV */
   header{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .35s ease;padding:18px 0}
-  header.scrolled{background:rgba(244,250,251,.85);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:12px 0}
+  header.scrolled{background:rgba(244,251,249,.85);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:12px 0}
   .nav{display:flex;align-items:center;justify-content:space-between}
   .logo{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:800;font-size:1.35rem;letter-spacing:-.03em}
   /* Logo: ondas sueltas (sin caja) + lockup G2Climas a dos tonos.
      La caja redondeada es solo para el favicon y el ícono de app. */
-  .logo .mark{width:42px;height:30px;display:grid;place-items:center;flex-shrink:0;color:var(--marca)}
-  .logo .mark svg{width:42px;height:30px}
+  .logo .mark{width:44px;height:26px;display:grid;place-items:center;flex-shrink:0;color:var(--marca)}
+  .logo .mark svg{width:44px;height:26px}
   .logo .wm{color:var(--marca)}
   .logo .wm b{color:var(--ink);font-weight:inherit}
   /* Sobre el footer oscuro se invierte, como en el manual de marca */
@@ -65,13 +65,13 @@
 
   /* BUTTONS */
   .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:1rem;transition:transform .2s,box-shadow .25s;cursor:pointer;border:none}
-  .btn-primary{background:linear-gradient(135deg,var(--cyan),var(--teal));color:#fff;box-shadow:0 14px 30px -12px rgba(22,137,156,.7)}
-  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 36px -12px rgba(22,137,156,.8)}
+  .btn-primary{background:linear-gradient(135deg,var(--cyan),var(--teal));color:#fff;box-shadow:0 14px 30px -12px rgba(11,139,125,.7)}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 36px -12px rgba(11,139,125,.8)}
   .btn-ghost{background:var(--white);color:var(--navy);border:1px solid var(--line)}
   .btn-ghost:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
 
   /* PAGE HEAD */
-  .page-head{padding:150px 0 50px;background:radial-gradient(900px 500px at 80% -10%,rgba(39,194,214,.20),transparent 60%),linear-gradient(180deg,#eef8f9,#f4fafb);text-align:center}
+  .page-head{padding:150px 0 50px;background:radial-gradient(900px 500px at 80% -10%,rgba(95,227,207,.20),transparent 60%),linear-gradient(180deg,#eefaf6,#f4fbf9);text-align:center}
   .page-head .crumb{font-size:.9rem;color:var(--muted);margin-bottom:14px}
   .page-head .crumb a{color:var(--teal);font-weight:600}
   .page-head h1{font-size:clamp(2.2rem,5vw,3.4rem)}
@@ -91,7 +91,7 @@
   .prod-thumb{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--frost)}
   .prod-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
   .prod-card:hover .prod-thumb img{transform:scale(1.05)}
-  .prod-badge{position:absolute;top:13px;left:13px;background:var(--teal);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:6px 13px;border-radius:999px;box-shadow:0 6px 16px -6px rgba(22,137,156,.6)}
+  .prod-badge{position:absolute;top:13px;left:13px;background:var(--teal);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:6px 13px;border-radius:999px;box-shadow:0 6px 16px -6px rgba(11,139,125,.6)}
   .prod-info{padding:22px 24px 24px;display:flex;flex-direction:column;gap:6px;flex:1}
   .prod-cat{font-size:.76rem;font-weight:700;color:var(--teal);letter-spacing:.05em;text-transform:uppercase}
   .prod-info h3{font-size:1.22rem}
@@ -136,7 +136,7 @@
 <header id="header">
   <div class="wrap nav">
     <a href="index.html" class="logo">
-      <span class="mark"><svg viewBox="0 0 32 23" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M2 10Q16-.2 30 10"/><path d="M5.9 15.4Q16 8 26.1 15.4" opacity=".55"/><path d="M9.7 20.8Q16 16.2 22.3 20.8" opacity=".3"/></svg></span><span class="wm"><b>G2</b>Climas</span>
+      <span class="mark"><svg viewBox="0 0 34 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M2 8Q17-.4 32 8"/><path d="M4 13.5Q17 6.3 30 13.5" opacity=".6"/><path d="M6 19Q17 12.8 28 19" opacity=".36"/></svg></span><span class="wm"><b>G2</b>Climas</span>
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="index.html#servicios">Servicios</a>
@@ -172,7 +172,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="logo"><span class="mark"><svg viewBox="0 0 32 23" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M2 10Q16-.2 30 10"/><path d="M5.9 15.4Q16 8 26.1 15.4" opacity=".55"/><path d="M9.7 20.8Q16 16.2 22.3 20.8" opacity=".3"/></svg></span><span class="wm"><b>G2</b>Climas</span></div>
+        <div class="logo"><span class="mark"><svg viewBox="0 0 34 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M2 8Q17-.4 32 8"/><path d="M4 13.5Q17 6.3 30 13.5" opacity=".6"/><path d="M6 19Q17 12.8 28 19" opacity=".36"/></svg></span><span class="wm"><b>G2</b>Climas</span></div>
         <p>Especialistas en climatización para hogar y negocio en la Comarca Lagunera. Frescura confiable, todo el año.</p>
       </div>
       <div class="foot-col">

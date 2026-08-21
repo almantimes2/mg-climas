@@ -23,10 +23,10 @@ body{background:#e7f2f5}
 body::before{
   content:'';position:fixed;inset:-22%;z-index:-1;pointer-events:none;
   background:
-    radial-gradient(42% 36% at 18% 22%, rgba(39,194,214,.55), transparent 70%),
-    radial-gradient(36% 32% at 82% 12%, rgba(22,137,156,.45), transparent 70%),
+    radial-gradient(42% 36% at 18% 22%, rgba(95,227,207,.55), transparent 70%),
+    radial-gradient(36% 32% at 82% 12%, rgba(11,139,125,.45), transparent 70%),
     radial-gradient(46% 42% at 72% 82%, rgba(232,155,60,.32), transparent 70%),
-    radial-gradient(32% 30% at 12% 86%, rgba(39,194,214,.38), transparent 70%),
+    radial-gradient(32% 30% at 12% 86%, rgba(95,227,207,.38), transparent 70%),
     radial-gradient(26% 24% at 48% 45%, rgba(13,43,62,.14), transparent 70%);
   filter:blur(36px);
   animation:mgFluido 26s ease-in-out infinite alternate;
@@ -55,7 +55,7 @@ header.scrolled .nav{background:rgba(255,255,255,.62)}
    cualquier página sin importar su punto de quiebre) */
 .nav-links.open{
   /* fondo SÓLIDO para que no se confunda con el texto de la página detrás */
-  background:linear-gradient(160deg,#ffffff,#eef8f9);
+  background:linear-gradient(160deg,#ffffff,#eefaf6);
   border-left:1px solid var(--vidrio-borde);
   border-top-left-radius:26px;border-bottom-left-radius:26px;
   box-shadow:-24px 0 60px -22px rgba(10,31,46,.42), inset 1px 1px 0 rgba(255,255,255,.9);
@@ -99,15 +99,15 @@ header.scrolled .nav{background:rgba(255,255,255,.62)}
 .card:hover{background:rgba(255,255,255,.46)}
 
 /* interiores translúcidos */
-.prod-thumb{background:rgba(223,244,246,.45)}
+.prod-thumb{background:rgba(220,246,240,.45)}
 .specs .row:nth-child(odd){background:rgba(255,255,255,.28)}
 .specs .row:hover{background:rgba(255,255,255,.5)}
 .vers .vrow:nth-child(even){background:rgba(255,255,255,.28)}
 .vers .vrow:hover{background:rgba(255,255,255,.5)}
-.vers .vrow.vhead{background:rgba(223,244,246,.55)}
+.vers .vrow.vhead{background:rgba(220,246,240,.55)}
 .card .ico,.sum-ic,.equip-ic,.ci-item .ic{
   background:rgba(255,255,255,.55);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.7), 0 8px 18px -10px rgba(22,137,156,.35);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.7), 0 8px 18px -10px rgba(11,139,125,.35);
 }
 .pd-media{
   background:var(--vidrio);
@@ -117,10 +117,10 @@ header.scrolled .nav{background:rgba(255,255,255,.62)}
 
 /* ---------- 4) BOTONES DE VIDRIO ---------- */
 .btn-primary{
-  background:linear-gradient(135deg,rgba(39,194,214,.88),rgba(22,137,156,.88));
+  background:linear-gradient(135deg,rgba(95,227,207,.88),rgba(11,139,125,.88));
   -webkit-backdrop-filter:blur(12px) saturate(1.4);backdrop-filter:blur(12px) saturate(1.4);
   border:1px solid rgba(255,255,255,.5);
-  box-shadow:0 16px 34px -14px rgba(22,137,156,.6), inset 0 1px 0 rgba(255,255,255,.55);
+  box-shadow:0 16px 34px -14px rgba(11,139,125,.6), inset 0 1px 0 rgba(255,255,255,.55);
 }
 .btn-ghost{
   background:rgba(255,255,255,.45);
@@ -176,7 +176,7 @@ header.scrolled .nav{background:rgba(255,255,255,.62)}
 
 /* ---------- 6) PANELES DE COLOR: vidrio entintado ---------- */
 .zone-card,.help-box{
-  background:linear-gradient(160deg,rgba(22,137,156,.78),rgba(13,43,62,.82));
+  background:linear-gradient(160deg,rgba(11,139,125,.78),rgba(13,43,62,.82));
   -webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);
   border:1px solid rgba(255,255,255,.35);
   box-shadow:var(--vidrio-sombra), inset 0 1px 0 rgba(255,255,255,.3);
@@ -203,9 +203,9 @@ footer{
 }
 
 /* ---------- 7) DETALLES ---------- */
-.login-mark{box-shadow:0 10px 24px -8px rgba(22,137,156,.6), inset 0 1px 0 rgba(255,255,255,.5)}
-.pd-badge{background:rgba(223,244,246,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
-.login-msg{background:rgba(223,244,246,.6)}
+.login-mark{box-shadow:0 10px 24px -8px rgba(11,139,125,.6), inset 0 1px 0 rgba(255,255,255,.5)}
+.pd-badge{background:rgba(220,246,240,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.login-msg{background:rgba(220,246,240,.6)}
 .promo-badge{border:1px solid rgba(255,255,255,.45);box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 8px 18px -6px rgba(232,155,60,.7)}
 
 /* con "menos movimiento" activado, el fondo no fluye pero sí se ve */

@@ -17,7 +17,7 @@
 
 window.WA_NUMBER = "526145137488"; // WhatsApp del botón de compra (52 + número)
 
-window.PRODUCT_FALLBACK = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20400%20300'%3E%3Crect%20width='400'%20height='300'%20fill='%23eaf6f8'/%3E%3Crect%20x='118'%20y='118'%20width='164'%20height='56'%20rx='14'%20fill='%23ffffff'%20stroke='%23cfe3e6'%20stroke-width='2'/%3E%3Crect%20x='118'%20y='118'%20width='164'%20height='18'%20rx='9'%20fill='%2316899c'/%3E%3Ctext%20x='200'%20y='212'%20font-family='sans-serif'%20font-size='17'%20font-weight='600'%20fill='%2316899c'%20text-anchor='middle'%3EFoto%20del%20producto%3C/text%3E%3C/svg%3E";
+window.PRODUCT_FALLBACK = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20400%20300'%3E%3Crect%20width='400'%20height='300'%20fill='%23e9f8f3'/%3E%3Crect%20x='118'%20y='118'%20width='164'%20height='56'%20rx='14'%20fill='%23ffffff'%20stroke='%23cfe8e2'%20stroke-width='2'/%3E%3Crect%20x='118'%20y='118'%20width='164'%20height='18'%20rx='9'%20fill='%230b8b7d'/%3E%3Ctext%20x='200'%20y='212'%20font-family='sans-serif'%20font-size='17'%20font-weight='600'%20fill='%230b8b7d'%20text-anchor='middle'%3EFoto%20del%20producto%3C/text%3E%3C/svg%3E";
 
 window.PRODUCTS = [
   {
