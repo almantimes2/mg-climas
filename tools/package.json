@@ -1,0 +1,8 @@
+{
+  "name": "g2climas-tools",
+  "private": true,
+  "description": "Herramientas de build del sitio (solo corren en GitHub Actions)",
+  "dependencies": {
+    "sharp": "0.33.5"
+  }
+}

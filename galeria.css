@@ -1,0 +1,99 @@
+/* ============================================================
+   GALERÍA "NUESTROS TRABAJOS" DE G2 CLIMAS (solo portada)
+   ------------------------------------------------------------
+   Las fotos NO se editan aquí: se suben a la carpeta
+   fotos-trabajos/ y la sección se arma sola (ver su LEEME.md).
+   Mientras esa carpeta no tenga fotos, la sección y sus enlaces
+   permanecen ocultos.
+   ============================================================ */
+
+/* el atributo hidden debe ganarle a reglas como ".foot-col a{display:block}" */
+[hidden]{display:none !important}
+
+#trabajos{padding:110px 0}
+
+/* ---------- cuadrícula ---------- */
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.gal-item{
+  position:relative;display:block;width:100%;padding:0;margin:0;
+  aspect-ratio:4/3;overflow:hidden;cursor:zoom-in;
+  border-radius:20px;border:1px solid var(--vidrio-borde, rgba(255,255,255,.65));
+  background:var(--frost);color:#fff;text-align:left;font:inherit;
+  box-shadow:var(--vidrio-sombra, 0 18px 50px -20px rgba(10,31,46,.35));
+  -webkit-tap-highlight-color:transparent;
+  transition:transform .3s ease,box-shadow .3s ease;
+  animation:galEntra .55s ease both;animation-delay:calc(var(--n,0) * 55ms);
+}
+.gal-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.gal-item .cap{
+  position:absolute;left:0;right:0;bottom:0;padding:44px 18px 15px;
+  background:linear-gradient(0deg,rgba(8,28,41,.85),rgba(8,28,41,0));
+  font-size:.92rem;font-weight:600;line-height:1.3;pointer-events:none;
+}
+/* el recorte a 2 líneas va en el texto interior: con padding en el mismo
+   elemento se asomaba una tercera línea */
+.gal-item .cap span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.gal-item:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+@media (hover:hover){
+  .gal-item:hover{transform:translateY(-6px);box-shadow:0 26px 54px -22px rgba(10,31,46,.55)}
+  .gal-item:hover img{transform:scale(1.06)}
+}
+@keyframes galEntra{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+.gal-more{display:flex;justify-content:center;margin-top:40px}
+
+/* ---------- visor ampliado ---------- */
+html.lb-lock{overflow:hidden}
+.lb{
+  position:fixed;inset:0;z-index:500;display:none;align-items:center;justify-content:center;
+  padding:56px 64px;background:rgba(6,22,33,.94);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  opacity:0;transition:opacity .25s ease;
+}
+.lb.open{display:flex}
+.lb.show{opacity:1}
+.lb-fig{margin:0;display:flex;flex-direction:column;align-items:center;gap:14px;max-width:100%}
+.lb-img{
+  display:block;max-width:100%;max-height:calc(100vh - 190px);max-height:calc(100dvh - 190px);
+  object-fit:contain;border-radius:14px;background:rgba(255,255,255,.04);
+  box-shadow:0 30px 80px -20px rgba(0,0,0,.6);transition:opacity .25s ease;
+}
+.lb-img.cargando{opacity:.25}
+.lb-info{text-align:center;color:#fff;max-width:640px;min-height:2.6em}
+.lb-cap{font-weight:600;font-size:1.02rem;line-height:1.35}
+.lb-count{font-size:.84rem;color:rgba(255,255,255,.62);margin-top:4px;letter-spacing:.04em}
+.lb-btn{
+  position:absolute;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.14);color:#fff;cursor:pointer;
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  transition:background .2s,transform .2s;-webkit-tap-highlight-color:transparent;
+}
+.lb-btn:hover{background:rgba(255,255,255,.28)}
+.lb-btn:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+.lb-btn svg{width:22px;height:22px}
+.lb-close{top:16px;right:16px}
+.lb-prev,.lb-next{top:50%;margin-top:-24px}
+.lb-prev{left:12px}
+.lb-next{right:12px}
+
+/* ---------- responsive ---------- */
+@media(max-width:900px){
+  #trabajos{padding:90px 0}
+  .gal-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+}
+@media(max-width:560px){
+  .gal-grid{gap:12px}
+  .gal-item{border-radius:15px}
+  .gal-item .cap{padding:34px 11px 10px;font-size:.78rem}
+  .lb{padding:64px 12px 28px}
+  .lb-img{max-height:calc(100vh - 210px);max-height:calc(100dvh - 210px)}
+  /* en móvil las flechas bajan junto a la leyenda para no tapar la foto */
+  .lb-prev,.lb-next{top:auto;bottom:22px;margin-top:0;width:44px;height:44px}
+  .lb-prev{left:18px}
+  .lb-next{right:18px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .gal-item{animation:none}
+  .gal-item,.gal-item img,.lb,.lb-img{transition:none}
+}
